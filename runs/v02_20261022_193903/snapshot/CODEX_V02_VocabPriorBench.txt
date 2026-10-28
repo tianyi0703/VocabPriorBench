@@ -1,0 +1,301 @@
+你正在继续现有项目 F:\VocabPriorBench。执行 V0.2：输出表行范数 × 方向的四条件对照。请完成实现、必要检查、一次受监督的限定运行、结果核算和审查包，不要只给计划。
+
+本指令基于已提交的 V01_REPORT.md 和 V01_REVIEW_BUNDLE.zip 的源码与原始日志审查。V0.1 已完成，本轮不重做 V0/V0.1，不启动原 V1，也不直接执行 RESIDUAL_HYPOTHESIS_CANDIDATE.md 中的 margin 回归。
+
+一、当前判断与本轮唯一问题
+
+V0.1 的两个 seed 最终结果：
+seed 1729：Fp−Lp = −0.01277006279727022；Sp−Fp = +0.1686183077365726。
+seed 2718：Fp−Lp = −0.010249442759874938；Sp−Fp = +0.1742985766641736。
+其中 Fp 为连续冻结输出、Lp 为连续可训输出、Sp 为 sign 冻结输出，均使用同一固定 log(pi)，输入始终连续且冻结。
+
+接受的结论是：
+- 输出冻结差距对共同先验干预敏感，不再把早期无先验冻结落后当作主要论文现象。
+- sign 仍有约 0.17 nats/token 的代价，但普通量化代价不自动构成新颖性。
+- V0.1 完整 GPU 子进程实测 312.71703610004624 秒；V0 为 19.406 秒；截至 V0.1 项目累计 332.12303610004624 秒。
+
+本轮只问：
+在相同训练预算下，sign 差距主要是否伴随逐 token 行范数的丢失？分别匹配原行范数和单位行范数后，连续方向与 sign 方向之间的差距还剩多少？
+
+这是最后一次针对当前解释路线的基础小对照。任何结果都不自动授权 V1、追加 V0.3、扩模型或扫参。“仍有残差”不是论文立项通过。
+
+二、范围与预算
+
+1. 使用现有 Windows 项目、现有 .venv、本机 RTX 4060 Laptop；不更换 PyTorch/CUDA，不升级环境，不用云 GPU、付费 API 或其他机器。
+2. 只读复用已锁定的 donor、tokenizer、PCA128 码表、train/dev、prior、两个公共初态和训练块顺序。不得下载新模型/语料、重做 PCA、重打包数据或重新随机抽样。
+3. 不打开 holdout，包括不读取、不重新哈希它；旧 metadata 中已有 hash 可引用并标明为历史记录。
+4. 四条件 × 两 seed，共 8 条计划训练轨迹。每条仍只遍历原 3,068 个训练块一次，共 767 个 optimizer steps、389,636 个有效预测目标。正常完成共 6,136 步、3,117,088 个目标、24 次完整 dev 评价。
+5. 新增所有 CUDA 作业的完整子进程累计墙钟上限 1,800 秒，含导入、初始化、合成预检、训练、评价、保存、退出及失败。外部 supervisor 记账，预留最后 60 秒收尾。完成即停，不要求用满 30 分钟。
+6. CPU 数值准备/检查累计上限 900 秒；不做全词表 V×V 矩阵、不跑全词表近邻搜索、不做逐 token 误差挖掘或任何预测器拟合。
+7. 不自动重跑已完成轨迹；若 GPU 阶段出现 OOM、非有限数、表冻结失败、预算到限或其他实质错误，保存现有证据并结束本轮，不能临时减 batch、调学习率或换精度补结果。运行前的普通代码问题可直接修复，经 CPU 检查后封存。
+8. V0/V0.1 原始文件保持原样。新增 configs/v02.yaml、scripts/v02/、reports/v02/、runs/v02_<唯一运行名>/。已有同名输出时使用新目录，不覆盖旧结果。
+9. 不写投稿论文、不承诺 CAS 一区或 CCF A/B 接收，不把两 seed 的阈值判断称为显著性或等价性证明。
+
+三、先核实复用来源；不要重新运行旧 prepare.py
+
+在任何 CUDA 初始化前，阅读并核对：
+- reports/v01/V01_REPORT.md；
+- reports/v01/EXPERIMENT_CONTRACT.md、source_manifest.json、data_selection.json；
+- configs/v01.yaml；
+- runs/v01_20261022/snapshot 中实际执行的 model.py、v01_model.py、prepare.py、run_gpu.py、common.py、supervise_gpu.py；
+- runs/v01_20261022/environment.json、resources_*_Fp.json、resources_*_Sp.json；
+- reports/v01/RESIDUAL_HYPOTHESIS_CANDIDATE.md。
+
+必须使用的现有输入，路径相对 F:\VocabPriorBench：
+- artifacts/codes.pt：键 input、output，均为 FP32，shape=(50304,128)。
+- data/packed.pt：键 train、dev。
+- runs/v01_20261022/private/prepared.pt：键 counts、pi、dev_counts。
+- runs/v01_20261022/private/common_init_1729.pt。
+- runs/v01_20261022/private/common_init_2718.pt。
+- runs/v01_20261022/block_order_1729.json。
+- runs/v01_20261022/block_order_2718.json。
+- reports/v01/data_selection.json 中的 selected_block_indices 与 seeds 字段。
+
+文件 SHA/字节数要与 V0.1 source_manifest.json 的 input_artifacts、prepared_artifacts 匹配。注意该 manifest 的部分键使用 Windows 反斜杠，应只做路径规范化，不修改原文件。
+
+对公共初态还要重算 state_sha256，与 data_selection.json 中该 seed 的 common_init_state_sha256 匹配；顺序文件 SHA 与 block_order_sha256 匹配，且是同一选中集合的完整排列。
+
+严禁用 artifacts/common_init.pt 代替两个 V0.1 初态；它是 V0 的来源项。严禁加载任何 final_{seed}_{condition}.pt，也不能从 final checkpoint 删除表字段后冒充随机初态。不能以“相同 seed 重新生成”替代“相同已封存初态”。
+
+所有 tensor 在 CPU 用 weights_only=True 加载。任一必要文件缺失、SHA 不符或公共状态不符，输出 BLOCKED_MISSING_OR_MISMATCHED_V01_INPUT，列出准确路径和失败项，GPU 消耗为 0，结束本轮。审查 ZIP 本来就排除了私有 tensor，不能把 ZIP 当作独立恢复训练状态的完整包。
+
+V0.2 显式设置工作区根目录 VPB_WORKSPACE=F:\VocabPriorBench，并使用自己的输出路径。不要导入旧 scripts/v01/common.py 来发现路径，因为它在 import 时会创建旧目录。
+
+直接复用 V0.1 已封存的 Student/OutputStudent 实现；将所需源文件逐字节复制进 V0.2 执行快照并记录原 hash。不要顺带重构模型、mask、标签或训练器核心数值逻辑。
+
+四、补充勘误与定向近邻，不改写历史
+
+在 reports/v02/V01_ERRATA.md 记录以下三点：
+1. V01_REPORT 中“训练 pi 加权投影 margin”与候选稿实际定义的“未加权最大余弦近邻 margin”不是同一个指标。本轮不执行二者；保留原文，通过补充文件澄清。
+2. 候选稿不在原训练前封存快照中；现有包不能独立核实其自述的结果盲态。应称为 V0.1 探索中提出的候选，不能称为已验证的独立预注册假设。这不影响先前封存的 V0.1 筛选规则。
+3. 原逐轨迹 monotonic 计时起点早于 start_utc 的记录位置。外部完整 GPU 计时仍有效；V0.2 在同一代码位置记录逐轨迹 UTC 与 monotonic 起点，不为此重跑 V0.1。
+
+定向查阅已有官方/原始全文，不做开放式综述、不下载模型：
+- N-Gram Memories at Two Bits: Quantizing Lookup Tables in Large Language Models：
+  https://arxiv.org/html/2610.21810
+  本次审查所读为 2026-10-21 的 v3；核对实际版本，重点 §4.3、E.2、F.2、F.3。
+- OneBit: Towards Extremely Low-bit Large Language Models，NeurIPS 2024：
+  https://proceedings.neurips.cc/paper_files/paper/2024/file/7a7a3f53faafc0161be0fcb57e5fa078-Paper-Conference.pdf
+  重点 §3 的 sign 与浮点幅度表示。
+
+形成不超过一页的 LITERATURE_DELTA.md：
+前者已比较全局增益、逐行最小二乘尺度、原行范数恢复，并在保留文本上检验增益预测；后者已有符号矩阵与浮点尺度分离。恢复尺度、范数/方向分开分析、加一个保留集预测都不能直接宣称为本项目创新。
+区别应准确写为：前者压缩选择性读取的条件记忆，本文实验固定 dense 输出表后重新训练随机学生；设置不同不自动等于实质贡献。若无法联网，记录访问限制并引用上述已提供的定位信息，继续已授权的小对照，不把泛泛文献待决当作额外训练或停摆的理由。
+
+五、四条件的唯一构造
+
+令 C 为 artifacts/codes.pt 原始 output 表，不是 Lp 训练后的表。
+令 r_v = ||C_v||_2，在 CPU FP64 中计算行范数。
+令 S 沿用 V0.1 的精确 FP32 表达式：
+    torch.where(C >= 0, 1., -1.) / math.sqrt(128)
+即 sign(0)=+1，C 和 S 两个锚点必须与 V0.1 Fp/Sp 的 initial output_codes tensor hash 一致。
+
+定义：
+- 非零行：U_v = C_v / r_v；
+- 零行 r_v=0：U_v = S_v，这是预先固定的退化行方向约定；
+- RS_v = r_v * S_v。
+
+U 与 RS 在 CPU FP64 构造，然后转 FP32 存储。C/S 保持上述原 FP32 值。
+不要 clamp r_v 到 epsilon 后再声称所有 U 行单位范数。正的极小行仍用 FP64 相除并检查有限性。零行不删除、不改 token ID。
+
+四个条件：
+C  ：连续方向，原始行范数，即原表 C；
+U  ：连续方向，单位行范数，即 U；
+RS ：sign 方向，原始行范数，即 r*S；
+S  ：sign 方向，单位行范数，即 S。
+
+所有条件输入表均为原连续 C_in 且冻结；输出表也全部冻结。主干及两个投影可训练，仍为 444,928 个公共可训参数。
+
+四条件共享原 prepared.pt 中的 pi，输出偏置全部为同一 FP32 log(pi)，并冻结。
+正确 logits 为：
+    logits_v(x) = T_v^T q(x) + log(pi_v)
+例如 RS 为 r_v*S_v^T*q(x) + log(pi_v)，不能把 log(pi_v) 也乘 r_v。
+
+不要再做每条件全局 RMS 校准、中心化、白化、旋转、温度调整或频率加权 RMS 对齐。报告原样描述量；如频率加权能量不同，这是干预的结果，不通过额外调参消除。
+
+本轮 r 是指定的 L2 行范数控制，不是二值重建的最小二乘最优尺度。控制失败不能排除所有尺度方案；不得看到结果后临时添加最小二乘尺度第五臂。
+
+六、最关键的实现修正与必要检查
+
+旧 run_gpu.py 按 condition[0] 和 condition.endswith('p') 决定表、可训性与 prior。不得把 C/U/RS/S 直接填入旧 YAML 后运行：
+- U/RS 可能静默走连续表；
+- 四个新名称不以 p 结尾，可能静默失去 prior。
+
+必须使用显式映射，例如：
+    tables = {"C": C, "U": U, "RS": RS, "S": S}
+    table = tables[condition]
+    model = OutputStudent(input_codes, table, False, logpi, ...)
+四条件统一 trainable_output=False，不从标签推断计算逻辑。
+
+只添加与新干预有关的必要 CPU 检查：
+1. 四表 shape/dtype、有限性、实际 tensor hash；C/S 锚点 hash 与 V0.1 匹配。
+2. 在 FP64 验证 C≈r*U、||U_v||≈1、||S_v||≈1、||RS_v||≈r_v，FP32 舍入容差统一 rtol=2e-6、atol=2e-7；同时报告实际最大误差，不能结果出来后放宽。
+3. 用包含非单位 r、零行和零坐标的小构造例检查零行规则、显式映射和“先算表分数、再加 bias”，防止把 bias 一起缩放。
+4. 检查四条件的 input/bias/common 初态 hash 相同，实际加载的 output hash 对应正确表，独立 storage，不共享可能被更新的对象。
+5. 训练前后输出、输入与 bias hash 必须不变，无梯度；公共可训参数有有限梯度且实际更新。
+6. 沿用原因果 mask、标签 shift、有效目标分母及梯度累积检查；无需扩建测试框架或重复整套模型验证。新准备与检查在 CPU 完成。
+
+保存 TABLE_CONSTRUCTION.json：
+- 公式、dtype、sign(0) 与零行规则；
+- 四表 hash、原 C 来源 hash、r 的来源；
+- 行范数 min/p1/p25/median/p75/p99/max，零行数、0<r<1e-12 的行数；
+- 零/极小行 token ID、训练目标数，特殊/未使用 token 类别说明；
+- 全部 50,304 输出类别统一保留，包括 EOS 及 tokenizer 未使用的输出行；
+- 四表全局 RMS；另可报告 sum_v pi_v*||T_v||²/128 的平方根，但不据此调参；
+- 所有构造恒等关系的误差与通过状态。
+
+七、在新训练前封存
+
+先写 configs/v02.yaml 和 reports/v02/EXPERIMENT_CONTRACT.md，包含四条件、两 seed、精确数据/初态/顺序来源、表定义、容差、预算、指标和第十节判定规则。
+
+契约明确：
+这是已看过 V0.1/dev 之后的新探索性控制，封存只保证本轮分析口径先于本轮结果；不是未见数据的确认实验。
+
+封存本轮实际执行脚本、模型依赖、测试、配置、完整指令与契约，记录树 hash 和输入/派生产物 hash。从该快照运行；不能封存一个版本、实际执行另一个版本。新报告构建器可以在运行后生成报告，但不得改训练契约/分析规则来适配结果。
+
+GPU 启动前核对上述必要检查全部通过、输入仍匹配。不要仅因普通实现细节停下来问用户；在本范围内直接完成。
+
+八、统一运行设置
+
+seeds = [1729,2718]。
+预先固定运行顺序：
+- seed1729：C, U, RS, S；
+- seed2718：S, RS, U, C。
+
+每个条件重新构造模型，从该 seed 原 common_init 文件加载，使用全新 optimizer；C/S 也重新训练，不能只引用 V0.1 Fp/Sp 代替本轮锚点。
+
+其余精确沿用 V0.1：
+- hidden/code width 128，2 层，4 heads，FF=512，seq_len=128，dropout=0；
+- 原 3,068 个完整训练块；每 seed 使用原 block_order 文件；
+- microbatch=2，gradient_accumulation=2，每步 4 条序列；
+- 每 microbatch 254 个有效目标，每步 508；
+- AdamW lr=3e-4，constant schedule，weight_decay=.01，betas=(.9,.999)，eps=1e-8，fused=True；
+- gradient clip max_norm=1；
+- bf16 autocast，参数/表/bias 为 FP32；TF32 等后端开关沿用封存执行版本；
+- 不新增 scheduler、warmup optimizer steps 或额外训练热身；
+- 在 step 0、100、767 评价完整现有 dev：493 个块、62,601 个有效目标；
+- 主终点固定 step767，不挑最好 checkpoint；
+- 训练过程、NLL 分子/有效分母、同步计时与错误事件逐条记录。
+
+允许在同一受监督 GPU 子进程中做一次小型合成 shape/有限性检查，不读额外语料，不做 optimizer 更新。其耗时必须计入 1,800 秒总上限。
+
+公共初态相同不意味着四表的初始 logits 相同；step0 差异属于本干预，不通过额外缩放或把投影清零去强行匹配。
+
+运行末尾记录 code_dtype=float32、bit_packed=false、实际表字节数。这里仍是普通浮点 matmul，不能声称已经有 1-bit GPU 存储或加速。
+
+九、资源与锚点桥接
+
+外部 supervisor 在启动子进程前开始 monotonic 计时，保存真实起止 UTC、完整命令、退出码及完整进程耗时。每轨迹 UTC/monotonic 起点放在同一位置，区分：
+- 同步训练步累计时间；
+- 评价时间；
+- 轨迹墙钟；
+- runner 墙钟；
+- supervisor 完整子进程墙钟。
+
+不得用纯训练时间代替总预算。保留 nvidia-smi 全设备峰值与本进程 PyTorch allocated/reserved 的不同口径，不外推热稳定吞吐。
+
+V0=19.406 秒、V0.1=312.71703610004624 秒分别保留；项目累计=332.12303610004624+本轮完整GPU消耗。无 GPU 时本轮为0。
+
+记录 bridge.csv，比对本轮 C/S 与 V0.1 Fp/Sp 在相同步数的原始 NLL；优先读取原 metrics_raw.json，不使用报告四舍五入值。
+主要旧终点：
+- seed1729 C/Fp：6.274890513258699；S/Sp：6.443508820995271。
+- seed2718 C/Fp：6.269336835657952；S/Sp：6.443635412322125。
+
+bridge_tolerance=0.001 nats/token，只是版本/执行漂移诊断，不是统计显著性阈值。若同 seed C/S 桥接偏差超过此值，检查已有 hash、初态、order、dtype/后端和版本证据，不调参去匹配旧结果，不自动重跑。
+本轮四格内部比较仍原样报告；若不能说明该漂移，状态标为 BRIDGE_UNRESOLVED，不把它当作对 V0.1 差距的确认。
+若发现实际输入/模型实现不一致，则标为 INVALID_COMPARISON，不做机制结论。
+
+十、唯一主要分析与事前判定
+
+对每个 seed 的 step767 dev NLL，令 L(T) 表示条件 T 的 loss。
+保留有符号差值：
+    G      = L(S)  − L(C)
+    D_r    = L(RS) − L(C)
+    D_1    = L(S)  − L(U)
+    N_cont = L(U)  − L(C)
+    N_sign = L(S)  − L(RS)
+    I      = D_1 − D_r = N_sign − N_cont
+
+验证代数关系：
+    G = N_sign + D_r = D_1 + N_cont
+这是差值恒等式，不是因果中介分解。不得把某个消除比例直接命名为“解释了百分之多少语义”。
+
+tau=0.05 nats/token，沿用探索性容忍值；两 seed 分别报告，不用平均值掩盖方向冲突，不把 token/块当独立训练重复，不做显著性或统计等价结论。
+
+仅在八条轨迹有效且完整、桥接未留无法说明的漂移时，按以下优先级判定：
+
+A. NORM_DOMINANT_IN_THIS_SCREEN
+要求两个 seed 都满足：
+    G > tau；
+    abs(D_r) <= tau；
+    abs(D_1) <= tau；
+    N_cont > tau；
+    N_sign > tau。
+含义仅为：在本设置与终点，匹配两种行范数后方向差均处于容忍区间，而去掉原行范数在两种方向下均增加 loss。
+结论：当前约0.17差距主要伴随这个已知尺度因素。停止以该差距为独立论文核心推进，不包装“恢复行范数”为新方法。
+
+B. DIRECTION_RESIDUAL_AT_BOTH_NORMS
+要求两个 seed 都满足 D_r>tau 且 D_1>tau。
+含义仅为：匹配原行范数和单位行范数时，sign 方向仍有同向代价，原差距不能只归因于丢失原行范数。
+不得升级为语义损失、唯一机制、所有尺度解释被排除或论文成立。有限步优化和固定输出族仍是竞争解释。仅保留现象，结束运行。
+
+C. INTERACTION_OR_COMPENSATION
+若两个 seed 的 abs(D_r)<=tau，但未满足 A，且两个 seed 的 D_1>tau，则明确标记恢复 r 仅在该格补偿了方向变化。
+不得因 RS 接近 C 就称“范数解释完整”。报告 I 及两条 norm effect，结束运行。
+
+D. INCONCLUSIVE_OR_OTHER_PATTERN
+其他未满足 A/B/C 的模式，包括 seed 冲突、反向效果、只有一种行范数下有残差或新现象。逐值报告，不事后修改阈值/条件使其归类为成功，不追加实验。若 G 本身不再超过阈值也照实报告；是否属于 B/C 仍按各自公式判定，不另加未定义的门槛。
+
+若出现 BLOCKED、INVALID、INCOMPLETE 或 BRIDGE_UNRESOLVED，优先报告该状态及已完成结果，不套用上述机制标签。
+
+step0/100 只作预定训练轨迹描述；不得看曲线改主要终点。
+
+十一、解释边界与研究决策
+
+报告至少说明：
+- r*S 的逐行缩放通常改变输出列空间，不能说四格只有优化不同、函数类完全相同。
+- 存在可训练输出投影 P 时，C→C*A、P→A^(-1)*P 的可逆右变换可保持函数，却改变原始行余弦几何。因此原表 margin 只是参数化相关代理量，不自动具有因果或语义意义。
+- 同初态、相同步数是配对控制，不能证明各模型都已优化收敛。
+- 两 seed、一 donor、一语料、一宽度、短预算，只支持本设置的探索结论。
+- 恢复原 L2 范数不是所有尺度方案的代表，不支持过宽的否定结论。
+- 四表全为 FP32，没有真实 bit packing 或新 kernel。
+- 已知的范数恢复、符号加幅度表示及几何增益预测不是本项目新贡献。
+
+在 RESEARCH_DECISION.md 写不超过一页的当前投入判断：
+“现有冻结/符号化差距是否足以成为 CAS 一区或 CCF A/B 独立论文主线？”默认不能因存在残差而回答是。
+若出现仍值得记录的现象，可写一个精确、可证伪且区别于近邻的新问题草案，并列明竞争解释和未解决点；不实现它、不执行新训练、不打开 holdout，也不以组合已有模块充当创新。
+若没有这样的具体问题，就明确建议暂存这条路线，保留工程资产和负结果，停止继续加基础诊断。
+
+无论 A/B/C/D 哪个结果，NEXT 都应是 PAUSE_CURRENT_CLAIM_FOR_RESEARCH_DECISION，而不是 START_V1。不要附带自动执行的 V0.3/V1 计划。
+
+十二、交付与审查包
+
+生成至少：
+- reports/v02/V02_REPORT.md；
+- reports/v02/EXPERIMENT_CONTRACT.md；
+- reports/v02/V01_ERRATA.md；
+- reports/v02/LITERATURE_DELTA.md；
+- reports/v02/TABLE_CONSTRUCTION.json；
+- reports/v02/RESEARCH_DECISION.md；
+- reports/v02/metrics.csv：所有24个预定评价记录，或明确缺失状态；
+- reports/v02/contrasts.csv：每 seed/评价点的有符号六差值，767为主；
+- reports/v02/screening.json：规则、逐 seed 输入、通过/失败原因与最终状态；
+- reports/v02/bridge.csv；
+- reports/v02/source_manifest.json、resource_profile.json、gpu_budget.json；
+- 本轮实际执行快照、配置、CPU检查输出、environment、events.jsonl、原始metrics、supervisor结果、块顺序来源证明和checkpoint哈希；
+- V02_REVIEW_BUNDLE.zip 及其外部 SHA256 文件。
+
+打包包含上述可审查文本/日志、运行源代码与逐文件 bytes/SHA256 manifest。排除 .venv、任何权重/码表 tensor、private 目录、原始或分词语料、凭据。包内 manifest 不自引用；ZIP 自身 SHA 放在包外。
+
+V02_REPORT 开头给出：
+EVIDENCE = VALID / BLOCKED / INVALID / INCOMPLETE / BRIDGE_UNRESOLVED
+NUMERICS = PASS / FAIL / NOT_RUN
+NORM_DIRECTION = 四个筛选标签之一，或 NOT_ASSESSED
+RESOURCE = WITHIN_30MIN / BUDGET_REACHED / NOT_RUN
+PAPER_READINESS = NOT_ESTABLISHED
+NEXT = PAUSE_CURRENT_CLAIM_FOR_RESEARCH_DECISION
+
+正文先给两 seed 的四条件最终 NLL、六个差值与判定，再说明可支持的结论、已排除的具体解释、仍未排除的解释、真实新增/项目累计 GPU 时间及来源边界。
+
+最后给用户实际执行命令、两个主要交付文件 V02_REPORT.md 和 V02_REVIEW_BUNDLE.zip 的本地位置，明确已完成什么、是否触发预算或证据问题。完成即停止，不询问是否继续扩训练。
+

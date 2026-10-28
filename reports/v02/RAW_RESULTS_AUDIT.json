@@ -1,0 +1,1148 @@
+{
+  "audit": "V0.2 independent post-run raw-log audit",
+  "status": "PASS",
+  "created_utc": "2026-10-22T11:59:57.700599+00:00",
+  "run": "runs/v02_20261022_193903",
+  "scope": "Read-only JSON/JSONL/text arithmetic audit. No torch imported, no tensor/checkpoint loaded or hashed, no corpus/holdout accessed, no GPU action. Weight freeze/common/order checks compare recorded hashes and CPU proof; this audit does not independently rehash tensors.",
+  "source_fingerprints": {
+    "runs/v02_20261022_193903/metrics_raw.json": {
+      "bytes": 9869,
+      "sha256": "ebfc1a4c1693fac1903ebaf7645231c41d01c840f351592550942dfefc332cdb"
+    },
+    "runs/v02_20261022_193903/events.jsonl": {
+      "bytes": 1478171,
+      "sha256": "0adc9eaedfbd87db871f347218fd1efae51a07ce9c3a27893789bbc264946a9f"
+    },
+    "runs/v01_20261022/metrics_raw.json": {
+      "bytes": 14838,
+      "sha256": "307982916247f2393e25fafb43e871e3447d4c05aee70c6d571ad56ec849dec7"
+    },
+    "runs/v02_20261022_193903/input_proof.json": {
+      "bytes": 5369,
+      "sha256": "839d934da6ad6d4ddfd93d8485dfbd1b1c3844dfbd9f848b5af5533a2d843325"
+    },
+    "runs/v02_20261022_193903/environment.json": {
+      "bytes": 741,
+      "sha256": "4e15706839dd7ab5c90d35616ac629f7ed807c580e21df5bfbceb8c20e0b1946"
+    },
+    "runs/v02_20261022_193903/supervisor_result.json": {
+      "bytes": 432,
+      "sha256": "692e1bee9f2195008ca4f0032410b058305d342a9b436520cce468f4a63b5179"
+    },
+    "reports/v02/resource_profile.json": {
+      "bytes": 30462,
+      "sha256": "8b15031f68dcad1fcff8b70862a0fe77ae0dfba94ec91b9d0c52974486cc1374"
+    },
+    "reports/v02/gpu_budget.json": {
+      "bytes": 798,
+      "sha256": "7efacf146f744d401711ad75a8b629d3e2dc49aaaccf64a377071dcd2af5cf26"
+    },
+    "reports/v02/anchor_hashes.json": {
+      "bytes": 15485,
+      "sha256": "c4279a3d903bdd1c0ab4a330f78d38792e4f780f72e194d85c44374007f1dfe1"
+    },
+    "reports/v02/TABLE_CONSTRUCTION.json": {
+      "bytes": 11923,
+      "sha256": "e0d0519c9f2abdb2c16f73330e62308166d165cc3e8047435c057c6549decfb1"
+    },
+    "configs/v02.yaml": {
+      "bytes": 1959,
+      "sha256": "9da93c253b2db79787af99f0df472083e0ac4351184bfdc470fa4c3d9f56d4ae"
+    },
+    "scripts/v02/analysis.py": {
+      "bytes": 6255,
+      "sha256": "f05fc532b2b90a9ae9739c82497cde1c49702f32881a9bd5a68c0e744ef31192"
+    },
+    "runs/v02_20261022_193903/resources_1729_C.json": {
+      "bytes": 3262,
+      "sha256": "7bc2c4edf91414fb2d5120a0bd8e211017a2116250374053bfd65387321a7ff6"
+    },
+    "runs/v02_20261022_193903/resources_1729_RS.json": {
+      "bytes": 3258,
+      "sha256": "f504011b7f8d89b01b81ce5e978415ec4d1dac5e3c588276319d966ba305e00a"
+    },
+    "runs/v02_20261022_193903/resources_1729_S.json": {
+      "bytes": 3264,
+      "sha256": "78689ca3de0411f4120ef01d8767ca2ae36994028909f7bb5531b3ddf1807139"
+    },
+    "runs/v02_20261022_193903/resources_1729_U.json": {
+      "bytes": 3260,
+      "sha256": "b803d6777e4496b2ff1e75f4c4917d8412b595cf8be622955a47eea589ce38f0"
+    },
+    "runs/v02_20261022_193903/resources_2718_C.json": {
+      "bytes": 3266,
+      "sha256": "d3f93291070772bf82f59d2e675b7333aeddb7ec806082f7886562917542d358"
+    },
+    "runs/v02_20261022_193903/resources_2718_RS.json": {
+      "bytes": 3267,
+      "sha256": "88b84b830d685d28c5fbdde3424e7128c9dac3bbe45a414f7799d971d39c5025"
+    },
+    "runs/v02_20261022_193903/resources_2718_S.json": {
+      "bytes": 3259,
+      "sha256": "84356b622cdf7499d2623b896aef28244a33e962e2cffda4a4ca3c82f35138ec"
+    },
+    "runs/v02_20261022_193903/resources_2718_U.json": {
+      "bytes": 3264,
+      "sha256": "45ca5ed597ea77550e680b877f6ab944ac6f608229bc404624245ec3d247d73f"
+    }
+  },
+  "checks": {
+    "exact_event_counts": true,
+    "exact_24_metric_keys": true,
+    "event_metric_evaluations_exact": true,
+    "predeclared_trajectory_order": true,
+    "config_hash_equals_job_start": true,
+    "config_predeclared_training_budget": true,
+    "cpu_input_proof_recorded_pass": true,
+    "environment_log_equals_json": true,
+    "1729_C:completed_767_steps": true,
+    "1729_C:508_targets_each_step": true,
+    "1729_C:389636_targets_total": true,
+    "1729_C:three_full_dev_evaluations": true,
+    "1729_C:resource_evaluations_equal_raw": true,
+    "1729_C:initial_hashes_match_cpu_proof": true,
+    "1729_C:frozen_hashes_unchanged": true,
+    "1729_C:same_original_input_and_prior": true,
+    "1729_C:output_hash_matches_table_metadata": true,
+    "1729_C:common_and_order_match_original_anchor": true,
+    "1729_C:trainable_common_parameters_recorded_updated": true,
+    "1729_C:resource_matches_trajectory_end": true,
+    "1729_C:resource_matches_profile": true,
+    "1729_C:finite_recorded_losses": true,
+    "1729_C:step_nll_matches_denominator": true,
+    "1729_C:online_nll_matches_step_sum": true,
+    "1729_C:recorded_training_seconds_matches_step_sum": true,
+    "1729_C:recorded_eval_seconds_matches_eval_sum": true,
+    "1729_C:wall_contains_recorded_train_eval": true,
+    "1729_C:online_prefix_at_step_0": true,
+    "1729_C:online_prefix_at_step_100": true,
+    "1729_C:online_prefix_at_step_767": true,
+    "1729_U:completed_767_steps": true,
+    "1729_U:508_targets_each_step": true,
+    "1729_U:389636_targets_total": true,
+    "1729_U:three_full_dev_evaluations": true,
+    "1729_U:resource_evaluations_equal_raw": true,
+    "1729_U:initial_hashes_match_cpu_proof": true,
+    "1729_U:frozen_hashes_unchanged": true,
+    "1729_U:same_original_input_and_prior": true,
+    "1729_U:output_hash_matches_table_metadata": true,
+    "1729_U:common_and_order_match_original_anchor": true,
+    "1729_U:trainable_common_parameters_recorded_updated": true,
+    "1729_U:resource_matches_trajectory_end": true,
+    "1729_U:resource_matches_profile": true,
+    "1729_U:finite_recorded_losses": true,
+    "1729_U:step_nll_matches_denominator": true,
+    "1729_U:online_nll_matches_step_sum": true,
+    "1729_U:recorded_training_seconds_matches_step_sum": true,
+    "1729_U:recorded_eval_seconds_matches_eval_sum": true,
+    "1729_U:wall_contains_recorded_train_eval": true,
+    "1729_U:online_prefix_at_step_0": true,
+    "1729_U:online_prefix_at_step_100": true,
+    "1729_U:online_prefix_at_step_767": true,
+    "1729_RS:completed_767_steps": true,
+    "1729_RS:508_targets_each_step": true,
+    "1729_RS:389636_targets_total": true,
+    "1729_RS:three_full_dev_evaluations": true,
+    "1729_RS:resource_evaluations_equal_raw": true,
+    "1729_RS:initial_hashes_match_cpu_proof": true,
+    "1729_RS:frozen_hashes_unchanged": true,
+    "1729_RS:same_original_input_and_prior": true,
+    "1729_RS:output_hash_matches_table_metadata": true,
+    "1729_RS:common_and_order_match_original_anchor": true,
+    "1729_RS:trainable_common_parameters_recorded_updated": true,
+    "1729_RS:resource_matches_trajectory_end": true,
+    "1729_RS:resource_matches_profile": true,
+    "1729_RS:finite_recorded_losses": true,
+    "1729_RS:step_nll_matches_denominator": true,
+    "1729_RS:online_nll_matches_step_sum": true,
+    "1729_RS:recorded_training_seconds_matches_step_sum": true,
+    "1729_RS:recorded_eval_seconds_matches_eval_sum": true,
+    "1729_RS:wall_contains_recorded_train_eval": true,
+    "1729_RS:online_prefix_at_step_0": true,
+    "1729_RS:online_prefix_at_step_100": true,
+    "1729_RS:online_prefix_at_step_767": true,
+    "1729_S:completed_767_steps": true,
+    "1729_S:508_targets_each_step": true,
+    "1729_S:389636_targets_total": true,
+    "1729_S:three_full_dev_evaluations": true,
+    "1729_S:resource_evaluations_equal_raw": true,
+    "1729_S:initial_hashes_match_cpu_proof": true,
+    "1729_S:frozen_hashes_unchanged": true,
+    "1729_S:same_original_input_and_prior": true,
+    "1729_S:output_hash_matches_table_metadata": true,
+    "1729_S:common_and_order_match_original_anchor": true,
+    "1729_S:trainable_common_parameters_recorded_updated": true,
+    "1729_S:resource_matches_trajectory_end": true,
+    "1729_S:resource_matches_profile": true,
+    "1729_S:finite_recorded_losses": true,
+    "1729_S:step_nll_matches_denominator": true,
+    "1729_S:online_nll_matches_step_sum": true,
+    "1729_S:recorded_training_seconds_matches_step_sum": true,
+    "1729_S:recorded_eval_seconds_matches_eval_sum": true,
+    "1729_S:wall_contains_recorded_train_eval": true,
+    "1729_S:online_prefix_at_step_0": true,
+    "1729_S:online_prefix_at_step_100": true,
+    "1729_S:online_prefix_at_step_767": true,
+    "2718_S:completed_767_steps": true,
+    "2718_S:508_targets_each_step": true,
+    "2718_S:389636_targets_total": true,
+    "2718_S:three_full_dev_evaluations": true,
+    "2718_S:resource_evaluations_equal_raw": true,
+    "2718_S:initial_hashes_match_cpu_proof": true,
+    "2718_S:frozen_hashes_unchanged": true,
+    "2718_S:same_original_input_and_prior": true,
+    "2718_S:output_hash_matches_table_metadata": true,
+    "2718_S:common_and_order_match_original_anchor": true,
+    "2718_S:trainable_common_parameters_recorded_updated": true,
+    "2718_S:resource_matches_trajectory_end": true,
+    "2718_S:resource_matches_profile": true,
+    "2718_S:finite_recorded_losses": true,
+    "2718_S:step_nll_matches_denominator": true,
+    "2718_S:online_nll_matches_step_sum": true,
+    "2718_S:recorded_training_seconds_matches_step_sum": true,
+    "2718_S:recorded_eval_seconds_matches_eval_sum": true,
+    "2718_S:wall_contains_recorded_train_eval": true,
+    "2718_S:online_prefix_at_step_0": true,
+    "2718_S:online_prefix_at_step_100": true,
+    "2718_S:online_prefix_at_step_767": true,
+    "2718_RS:completed_767_steps": true,
+    "2718_RS:508_targets_each_step": true,
+    "2718_RS:389636_targets_total": true,
+    "2718_RS:three_full_dev_evaluations": true,
+    "2718_RS:resource_evaluations_equal_raw": true,
+    "2718_RS:initial_hashes_match_cpu_proof": true,
+    "2718_RS:frozen_hashes_unchanged": true,
+    "2718_RS:same_original_input_and_prior": true,
+    "2718_RS:output_hash_matches_table_metadata": true,
+    "2718_RS:common_and_order_match_original_anchor": true,
+    "2718_RS:trainable_common_parameters_recorded_updated": true,
+    "2718_RS:resource_matches_trajectory_end": true,
+    "2718_RS:resource_matches_profile": true,
+    "2718_RS:finite_recorded_losses": true,
+    "2718_RS:step_nll_matches_denominator": true,
+    "2718_RS:online_nll_matches_step_sum": true,
+    "2718_RS:recorded_training_seconds_matches_step_sum": true,
+    "2718_RS:recorded_eval_seconds_matches_eval_sum": true,
+    "2718_RS:wall_contains_recorded_train_eval": true,
+    "2718_RS:online_prefix_at_step_0": true,
+    "2718_RS:online_prefix_at_step_100": true,
+    "2718_RS:online_prefix_at_step_767": true,
+    "2718_U:completed_767_steps": true,
+    "2718_U:508_targets_each_step": true,
+    "2718_U:389636_targets_total": true,
+    "2718_U:three_full_dev_evaluations": true,
+    "2718_U:resource_evaluations_equal_raw": true,
+    "2718_U:initial_hashes_match_cpu_proof": true,
+    "2718_U:frozen_hashes_unchanged": true,
+    "2718_U:same_original_input_and_prior": true,
+    "2718_U:output_hash_matches_table_metadata": true,
+    "2718_U:common_and_order_match_original_anchor": true,
+    "2718_U:trainable_common_parameters_recorded_updated": true,
+    "2718_U:resource_matches_trajectory_end": true,
+    "2718_U:resource_matches_profile": true,
+    "2718_U:finite_recorded_losses": true,
+    "2718_U:step_nll_matches_denominator": true,
+    "2718_U:online_nll_matches_step_sum": true,
+    "2718_U:recorded_training_seconds_matches_step_sum": true,
+    "2718_U:recorded_eval_seconds_matches_eval_sum": true,
+    "2718_U:wall_contains_recorded_train_eval": true,
+    "2718_U:online_prefix_at_step_0": true,
+    "2718_U:online_prefix_at_step_100": true,
+    "2718_U:online_prefix_at_step_767": true,
+    "2718_C:completed_767_steps": true,
+    "2718_C:508_targets_each_step": true,
+    "2718_C:389636_targets_total": true,
+    "2718_C:three_full_dev_evaluations": true,
+    "2718_C:resource_evaluations_equal_raw": true,
+    "2718_C:initial_hashes_match_cpu_proof": true,
+    "2718_C:frozen_hashes_unchanged": true,
+    "2718_C:same_original_input_and_prior": true,
+    "2718_C:output_hash_matches_table_metadata": true,
+    "2718_C:common_and_order_match_original_anchor": true,
+    "2718_C:trainable_common_parameters_recorded_updated": true,
+    "2718_C:resource_matches_trajectory_end": true,
+    "2718_C:resource_matches_profile": true,
+    "2718_C:finite_recorded_losses": true,
+    "2718_C:step_nll_matches_denominator": true,
+    "2718_C:online_nll_matches_step_sum": true,
+    "2718_C:recorded_training_seconds_matches_step_sum": true,
+    "2718_C:recorded_eval_seconds_matches_eval_sum": true,
+    "2718_C:wall_contains_recorded_train_eval": true,
+    "2718_C:online_prefix_at_step_0": true,
+    "2718_C:online_prefix_at_step_100": true,
+    "2718_C:online_prefix_at_step_767": true,
+    "all_full_dev_nll_divisions_exact": true,
+    "all_context_gains_exact": true,
+    "single_fixed_dev_unigram_baseline": true,
+    "all_12_anchor_bridges_pass_001": true,
+    "all_12_anchor_bridges_exact": true,
+    "one_successful_gpu_process": true,
+    "no_recorded_errors_or_oom": true,
+    "runner_and_supervisor_completed": true,
+    "full_process_budget_exact": true,
+    "new_gpu_process_within_1800_seconds": true,
+    "runner_time_inside_process_time": true,
+    "contrasts_arithmetic_identities_exact": true,
+    "independent_B_predicate_matches_classifier": true,
+    "read_sources_unchanged_during_audit": true
+  },
+  "failures": [],
+  "event_counts": {
+    "environment": 1,
+    "job_start": 1,
+    "gpu_preflight": 1,
+    "trajectory_start": 8,
+    "evaluation": 24,
+    "step": 6136,
+    "trajectory_end": 8,
+    "runner_end": 1
+  },
+  "totals": {
+    "trajectories": 8,
+    "optimizer_steps": 6136,
+    "train_valid_targets": 3117088,
+    "train_valid_targets_per_trajectory": 389636,
+    "targets_per_optimizer_step": 508,
+    "evaluation_count": 24,
+    "dev_valid_targets_per_eval": 62601,
+    "total_dev_target_evaluations": 1502424,
+    "note": "Training totals count all eight updates; repeated evaluation targets are counted separately and are not distinct held-out samples."
+  },
+  "trajectories": [
+    {
+      "seed": 1729,
+      "condition": "C",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "block_order_sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5",
+      "train_online_nll_sum": 2455415.775390625,
+      "train_online_nll": 6.3018195838952895,
+      "wall_seconds": 19.744773100013845,
+      "train_seconds": 15.073841000848915,
+      "eval_seconds": 2.808433900005184,
+      "final_dev_nll": 6.274890513258699,
+      "final_context_gain": 1.2903718649889866
+    },
+    {
+      "seed": 1729,
+      "condition": "U",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "248af99e95b47898a2ded80e2196e32159341c640ee886e74eae39723f3f9e35",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "248af99e95b47898a2ded80e2196e32159341c640ee886e74eae39723f3f9e35",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "block_order_sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5",
+      "train_online_nll_sum": 2454231.766723633,
+      "train_online_nll": 6.298780828064226,
+      "wall_seconds": 18.059319699998014,
+      "train_seconds": 14.996218000189401,
+      "eval_seconds": 2.7215980999171734,
+      "final_dev_nll": 6.273991691340855,
+      "final_context_gain": 1.29127068690683
+    },
+    {
+      "seed": 1729,
+      "condition": "RS",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "49bd39b739b28a63bb044815e1a1e4c86b546e8037c326b4998642623e9a7c1d",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "49bd39b739b28a63bb044815e1a1e4c86b546e8037c326b4998642623e9a7c1d",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "block_order_sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5",
+      "train_online_nll_sum": 2523302.098510742,
+      "train_online_nll": 6.476049693844363,
+      "wall_seconds": 18.635804300021846,
+      "train_seconds": 15.572289599047508,
+      "eval_seconds": 2.7642273999517784,
+      "final_dev_nll": 6.454264401890607,
+      "final_context_gain": 1.110997976357078
+    },
+    {
+      "seed": 1729,
+      "condition": "S",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "block_order_sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5",
+      "train_online_nll_sum": 2518830.3479003906,
+      "train_online_nll": 6.464572955015426,
+      "wall_seconds": 19.031112399999984,
+      "train_seconds": 15.81610359903425,
+      "eval_seconds": 2.882665699988138,
+      "final_dev_nll": 6.443508820995271,
+      "final_context_gain": 1.121753557252414
+    },
+    {
+      "seed": 2718,
+      "condition": "S",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "fb70662d63bb1cac80e33f001a635222b0c74cdbb6ed821181de878a6565b7b5",
+      "block_order_sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356",
+      "train_online_nll_sum": 2521358.8041992188,
+      "train_online_nll": 6.471062232953882,
+      "wall_seconds": 18.559825900010765,
+      "train_seconds": 15.431525999912992,
+      "eval_seconds": 2.825366999953985,
+      "final_dev_nll": 6.443635412322125,
+      "final_context_gain": 1.12162696592556
+    },
+    {
+      "seed": 2718,
+      "condition": "RS",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "49bd39b739b28a63bb044815e1a1e4c86b546e8037c326b4998642623e9a7c1d",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "49bd39b739b28a63bb044815e1a1e4c86b546e8037c326b4998642623e9a7c1d",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "fb70662d63bb1cac80e33f001a635222b0c74cdbb6ed821181de878a6565b7b5",
+      "block_order_sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356",
+      "train_online_nll_sum": 2526073.5295410156,
+      "train_online_nll": 6.483162565935939,
+      "wall_seconds": 18.968366600049194,
+      "train_seconds": 15.731801101122983,
+      "eval_seconds": 2.909497900051065,
+      "final_dev_nll": 6.45421161512371,
+      "final_context_gain": 1.1110507631239752
+    },
+    {
+      "seed": 2718,
+      "condition": "U",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "248af99e95b47898a2ded80e2196e32159341c640ee886e74eae39723f3f9e35",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "248af99e95b47898a2ded80e2196e32159341c640ee886e74eae39723f3f9e35",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "fb70662d63bb1cac80e33f001a635222b0c74cdbb6ed821181de878a6565b7b5",
+      "block_order_sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356",
+      "train_online_nll_sum": 2458220.0881347656,
+      "train_online_nll": 6.3090168468384995,
+      "wall_seconds": 19.16590250004083,
+      "train_seconds": 15.926407499529887,
+      "eval_seconds": 2.8992839999846183,
+      "final_dev_nll": 6.268255440614217,
+      "final_context_gain": 1.2970069376334683
+    },
+    {
+      "seed": 2718,
+      "condition": "C",
+      "checks": {
+        "completed_767_steps": true,
+        "508_targets_each_step": true,
+        "389636_targets_total": true,
+        "three_full_dev_evaluations": true,
+        "resource_evaluations_equal_raw": true,
+        "initial_hashes_match_cpu_proof": true,
+        "frozen_hashes_unchanged": true,
+        "same_original_input_and_prior": true,
+        "output_hash_matches_table_metadata": true,
+        "common_and_order_match_original_anchor": true,
+        "trainable_common_parameters_recorded_updated": true,
+        "resource_matches_trajectory_end": true,
+        "resource_matches_profile": true,
+        "finite_recorded_losses": true,
+        "step_nll_matches_denominator": true,
+        "online_nll_matches_step_sum": true,
+        "recorded_training_seconds_matches_step_sum": true,
+        "recorded_eval_seconds_matches_eval_sum": true,
+        "wall_contains_recorded_train_eval": true,
+        "online_prefix_at_step_0": true,
+        "online_prefix_at_step_100": true,
+        "online_prefix_at_step_767": true
+      },
+      "steps": 767,
+      "train_valid_targets": 389636,
+      "eval_steps": [
+        0,
+        100,
+        767
+      ],
+      "dev_valid_targets_per_eval": [
+        62601,
+        62601,
+        62601
+      ],
+      "initial_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "final_frozen_hashes": {
+        "input_codes": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output_codes": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215",
+        "output_bias": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603"
+      },
+      "common_initial_state_sha256": "fb70662d63bb1cac80e33f001a635222b0c74cdbb6ed821181de878a6565b7b5",
+      "block_order_sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356",
+      "train_online_nll_sum": 2460078.6971435547,
+      "train_online_nll": 6.313786963072085,
+      "wall_seconds": 19.316814799967688,
+      "train_seconds": 16.036323500564322,
+      "eval_seconds": 2.9290940999635495,
+      "final_dev_nll": 6.269336835657952,
+      "final_context_gain": 1.2959255425897336
+    }
+  ],
+  "bridge": {
+    "pairs": [
+      {
+        "seed": 1729,
+        "condition": "C",
+        "v01_condition": "Fp",
+        "step": 0,
+        "v02_nll": 7.710583739645483,
+        "v01_raw_nll": 7.710583739645483,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 1729,
+        "condition": "C",
+        "v01_condition": "Fp",
+        "step": 100,
+        "v02_nll": 6.852926845998117,
+        "v01_raw_nll": 6.852926845998117,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 1729,
+        "condition": "C",
+        "v01_condition": "Fp",
+        "step": 767,
+        "v02_nll": 6.274890513258699,
+        "v01_raw_nll": 6.274890513258699,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 1729,
+        "condition": "S",
+        "v01_condition": "Sp",
+        "step": 0,
+        "v02_nll": 7.751682039636448,
+        "v01_raw_nll": 7.751682039636448,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 1729,
+        "condition": "S",
+        "v01_condition": "Sp",
+        "step": 100,
+        "v02_nll": 7.0034112247654665,
+        "v01_raw_nll": 7.0034112247654665,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 1729,
+        "condition": "S",
+        "v01_condition": "Sp",
+        "step": 767,
+        "v02_nll": 6.443508820995271,
+        "v01_raw_nll": 6.443508820995271,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 2718,
+        "condition": "S",
+        "v01_condition": "Sp",
+        "step": 0,
+        "v02_nll": 7.711838385965155,
+        "v01_raw_nll": 7.711838385965155,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 2718,
+        "condition": "S",
+        "v01_condition": "Sp",
+        "step": 100,
+        "v02_nll": 7.014444109490937,
+        "v01_raw_nll": 7.014444109490937,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 2718,
+        "condition": "S",
+        "v01_condition": "Sp",
+        "step": 767,
+        "v02_nll": 6.443635412322125,
+        "v01_raw_nll": 6.443635412322125,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 2718,
+        "condition": "C",
+        "v01_condition": "Fp",
+        "step": 0,
+        "v02_nll": 7.684166416368024,
+        "v01_raw_nll": 7.684166416368024,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 2718,
+        "condition": "C",
+        "v01_condition": "Fp",
+        "step": 100,
+        "v02_nll": 6.865855782914186,
+        "v01_raw_nll": 6.865855782914186,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      },
+      {
+        "seed": 2718,
+        "condition": "C",
+        "v01_condition": "Fp",
+        "step": 767,
+        "v02_nll": 6.269336835657952,
+        "v01_raw_nll": 6.269336835657952,
+        "signed_error": 0.0,
+        "abs_error": 0.0,
+        "nll_sum_exactly_equal": true,
+        "dev_denominator_exactly_equal": true
+      }
+    ],
+    "count": 12,
+    "tolerance_nats": 0.001,
+    "max_absolute_nll_error": 0.0,
+    "status": "PASS"
+  },
+  "final_dev_nll": {
+    "1729": {
+      "C": 6.274890513258699,
+      "U": 6.273991691340855,
+      "RS": 6.454264401890607,
+      "S": 6.443508820995271
+    },
+    "2718": {
+      "S": 6.443635412322125,
+      "RS": 6.45421161512371,
+      "U": 6.268255440614217,
+      "C": 6.269336835657952
+    }
+  },
+  "final_signed_contrasts": [
+    {
+      "seed": 1729,
+      "G": 0.1686183077365726,
+      "D_r": 0.1793738886319085,
+      "D_1": 0.169517129654416,
+      "N_cont": -0.0008988219178434065,
+      "N_sign": -0.010755580895335903,
+      "I": -0.009856758977492497,
+      "identity_errors": {
+        "G_minus_sum_N_sign_D_r": 0.0,
+        "G_minus_sum_D_1_N_cont": 0.0,
+        "I_minus_difference_N_sign_N_cont": 0.0
+      },
+      "max_abs_identity_error": 0.0
+    },
+    {
+      "seed": 2718,
+      "G": 0.1742985766641736,
+      "D_r": 0.18487477946575837,
+      "D_1": 0.1753799717079083,
+      "N_cont": -0.001081395043734723,
+      "N_sign": -0.010576202801584778,
+      "I": -0.009494807757850054,
+      "identity_errors": {
+        "G_minus_sum_N_sign_D_r": 0.0,
+        "G_minus_sum_D_1_N_cont": 0.0,
+        "I_minus_difference_N_sign_N_cont": 0.0
+      },
+      "max_abs_identity_error": 0.0
+    }
+  ],
+  "classification": {
+    "label": "DIRECTION_RESIDUAL_AT_BOTH_NORMS",
+    "tau_nats_per_token": 0.05,
+    "priority": [
+      "NORM_DOMINANT_IN_THIS_SCREEN",
+      "DIRECTION_RESIDUAL_AT_BOTH_NORMS",
+      "INTERACTION_OR_COMPENSATION",
+      "INCONCLUSIVE_OR_OTHER_PATTERN"
+    ],
+    "per_seed": [
+      {
+        "seed": 1729,
+        "values": {
+          "G": 0.1686183077365726,
+          "D_r": 0.1793738886319085,
+          "D_1": 0.169517129654416,
+          "N_cont": -0.0008988219178434065,
+          "N_sign": -0.010755580895335903,
+          "I": -0.009856758977492497
+        },
+        "A": {
+          "criteria": {
+            "G_gt_tau": true,
+            "abs_D_r_le_tau": false,
+            "abs_D_1_le_tau": false,
+            "N_cont_gt_tau": false,
+            "N_sign_gt_tau": false
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        },
+        "B": {
+          "criteria": {
+            "D_r_gt_tau": true,
+            "D_1_gt_tau": true
+          },
+          "passed": true,
+          "unmet_reasons": []
+        },
+        "C": {
+          "criteria": {
+            "abs_D_r_le_tau": false,
+            "D_1_gt_tau": true,
+            "A_not_satisfied_across_both_seeds": true
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        }
+      },
+      {
+        "seed": 2718,
+        "values": {
+          "G": 0.1742985766641736,
+          "D_r": 0.18487477946575837,
+          "D_1": 0.1753799717079083,
+          "N_cont": -0.001081395043734723,
+          "N_sign": -0.010576202801584778,
+          "I": -0.009494807757850054
+        },
+        "A": {
+          "criteria": {
+            "G_gt_tau": true,
+            "abs_D_r_le_tau": false,
+            "abs_D_1_le_tau": false,
+            "N_cont_gt_tau": false,
+            "N_sign_gt_tau": false
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        },
+        "B": {
+          "criteria": {
+            "D_r_gt_tau": true,
+            "D_1_gt_tau": true
+          },
+          "passed": true,
+          "unmet_reasons": []
+        },
+        "C": {
+          "criteria": {
+            "abs_D_r_le_tau": false,
+            "D_1_gt_tau": true,
+            "A_not_satisfied_across_both_seeds": true
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        }
+      }
+    ],
+    "all_seeds_predicates": {
+      "A": false,
+      "B": true,
+      "C": false
+    },
+    "unmet_reasons_by_rule": {
+      "A": [
+        {
+          "seed": 1729,
+          "reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        },
+        {
+          "seed": 2718,
+          "reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        }
+      ],
+      "B": [],
+      "C": [
+        {
+          "seed": 1729,
+          "reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        },
+        {
+          "seed": 2718,
+          "reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        }
+      ]
+    },
+    "additional_G_gate_for_B_or_C": false,
+    "scope": "two-seed exploratory screen; no significance, equivalence, novelty or causal mediation claim"
+  },
+  "timing": {
+    "runner_seconds": 153.37049619999016,
+    "new_gpu_complete_process_seconds": 156.68108119996032,
+    "previous_project_gpu_complete_process_seconds": 332.12303610004625,
+    "project_gpu_complete_process_seconds": 488.80411730000657,
+    "budget_limit_seconds": 1800,
+    "jobs": 1,
+    "resource_scope": "Observed 18-20 second trajectories and full process wall clock; no sustained thermal or energy measurement."
+  },
+  "conclusion_limits": [
+    "The predeclared B screen is supported at the single-epoch endpoint for these two seeds and fixed optimization recipe.",
+    "Small signed N_cont, N_sign, and I are raw screen contrasts, not equivalence or statistical significance tests.",
+    "Row scaling can change the attainable score subspace; this is not a causal mediation or converged-geometry demonstration.",
+    "No novelty, broad generalization, compression speedup, low-bit memory reduction, or sustained thermal conclusion follows from these logs."
+  ],
+  "next": "PAUSE_CURRENT_CLAIM_FOR_RESEARCH_DECISION",
+  "audit_arithmetic_elapsed_seconds": 0.18921660003252327
+}

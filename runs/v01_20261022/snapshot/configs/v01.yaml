@@ -1,0 +1,70 @@
+version: V0.1
+run_name: v01_20261022
+seeds: [1729, 2718]
+conditions: [L0, F0, S0, Lp, Fp, Sp]
+run_order:
+  '1729': [L0, F0, S0, Lp, Fp, Sp]
+  '2718': [Sp, Fp, Lp, S0, F0, L0]
+student:
+  dim: 128
+  layers: 2
+  heads: 4
+  ff_dim: 512
+  max_seq_len: 128
+  dropout: 0.0
+vocabulary: 50304
+code_width: 128
+input: continuous_pca128_frozen
+code_dtype: float32
+output_bias_dtype: float32
+bit_packed: false
+data:
+  packed_path: data/packed.pt
+  select_complete_blocks: first_3068_full_blocks_in_existing_order
+  selected_blocks: 3068
+  effective_sequences_per_step: 4
+  order: independent_torch_randperm_per_seed_same_set
+  dev: all_existing_dev_blocks_and_valid_targets
+  holdout: never_open
+prior:
+  alpha: 0.1
+  strength: 1.0
+  learnable: false
+  counts: actual_loss_targets_in_selected_training_blocks_only
+training:
+  optimizer_steps: 767
+  epochs_max: 1
+  microbatch: 2
+  gradient_accumulation: 2
+  sequence_length: 128
+  learning_rate: 0.0003
+  lr_schedule: constant
+  optimizer: AdamW
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  precision: bf16_autocast_fp32_parameters
+  evaluation_steps: [0, 100, 767]
+  main_endpoint: 767
+  warmup_optimizer_steps: 0
+diagnostic:
+  dtype: float64
+  initialization: zero_vector
+  optimizer: torch.optim.LBFGS
+  line_search: strong_wolfe
+  lbfgs_max_iter: 500
+  max_eval: 700
+  history_size: 50
+  tolerance_grad: 0.00000001
+  tolerance_change: 0.000000000001
+  convergence_grad_inf: 0.000001
+  softmax_prior_atol: 0.000000000001
+screen:
+  tau_nats_per_token: 0.05
+  sensitive_remaining_fraction: 0.25
+  repeats: 2
+  uncertainty_claim: descriptive_paired_seeds_only
+budget:
+  new_gpu_process_wall_limit_seconds: 3600
+  gpu_cleanup_reserve_seconds: 60
+  estimated_gpu_job_seconds: 600
+  cpu_numerical_process_limit_seconds: 1800

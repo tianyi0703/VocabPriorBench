@@ -1,0 +1,86 @@
+[
+  {
+    "utc": "2026-10-21T12:15:22Z",
+    "rss_bytes": 1681997824,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "3927",
+      "free_mib": "4030",
+      "driver": "616.92",
+      "temperature_c": "56",
+      "power_w": "41.50"
+    }
+  },
+  {
+    "utc": "2026-10-21T12:15:23Z",
+    "rss_bytes": 1683959808,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4151",
+      "free_mib": "3806",
+      "driver": "616.92",
+      "temperature_c": "55",
+      "power_w": "35.74"
+    }
+  },
+  {
+    "utc": "2026-10-21T12:15:23Z",
+    "rss_bytes": 1683968000,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4151",
+      "free_mib": "3806",
+      "driver": "616.92",
+      "temperature_c": "55",
+      "power_w": "34.49"
+    }
+  },
+  {
+    "utc": "2026-10-21T12:15:24Z",
+    "rss_bytes": 1683968000,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4151",
+      "free_mib": "3806",
+      "driver": "616.92",
+      "temperature_c": "55",
+      "power_w": "33.02"
+    }
+  },
+  {
+    "utc": "2026-10-21T12:15:25Z",
+    "rss_bytes": 1683968000,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4151",
+      "free_mib": "3806",
+      "driver": "616.92",
+      "temperature_c": "54",
+      "power_w": "28.36"
+    }
+  },
+  {
+    "utc": "2026-10-21T12:15:25Z",
+    "rss_bytes": 1683632128,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4151",
+      "free_mib": "3806",
+      "driver": "616.92",
+      "temperature_c": "53",
+      "power_w": "26.42"
+    }
+  }
+]

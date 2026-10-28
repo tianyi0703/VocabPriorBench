@@ -1,0 +1,15 @@
+test_a_b_saved_common_state_and_forward_identical (test_numerics.NumericalContractTests.test_a_b_saved_common_state_and_forward_identical) ... ok
+test_all_arms_common_parameters_update_and_codes_obey_freeze (test_numerics.NumericalContractTests.test_all_arms_common_parameters_update_and_codes_obey_freeze) ... ok
+test_attention_padding_masks_keys_and_remains_finite (test_numerics.NumericalContractTests.test_attention_padding_masks_keys_and_remains_finite) ... ok
+test_causality_future_does_not_change_past (test_numerics.NumericalContractTests.test_causality_future_does_not_change_past) ... ok
+test_hashes_are_stable_sensitive_and_do_not_alias (test_numerics.NumericalContractTests.test_hashes_are_stable_sensitive_and_do_not_alias) ... ok
+test_next_token_shift_padding_and_token_weighted_loss (test_numerics.NumericalContractTests.test_next_token_shift_padding_and_token_weighted_loss) ... ok
+test_untied_code_identity_and_unique_parameter_counts (test_numerics.NumericalContractTests.test_untied_code_identity_and_unique_parameter_counts) ... ok
+test_common_loading_preserves_bias_and_rejects_intervention_keys (test_v01_numerics.OutputInterventionTests.test_common_loading_preserves_bias_and_rejects_intervention_keys) ... ok
+test_same_bias_l_f_initial_forward_and_common_hash (test_v01_numerics.OutputInterventionTests.test_same_bias_l_f_initial_forward_and_common_hash) ... ok
+test_six_conditions_freeze_update_finite_and_valid_count (test_v01_numerics.OutputInterventionTests.test_six_conditions_freeze_update_finite_and_valid_count) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.406s
+
+OK

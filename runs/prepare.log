@@ -1,0 +1,48 @@
+{"event": "verified_file", "url": "https://huggingface.co/EleutherAI/pythia-70m/resolve/a39f36b100fe8a5377810d56c3f4789b9c53ac42/config.json", "path": "artifacts\\donor\\config.json", "bytes": 567, "sha256": "002050231a9b1ec3ac77aa6b9b3bbdc4d923f4068a7dd33b8da72a9bd6ad9a43", "remote_metadata": {"rfilename": "config.json", "blobId": "d7a9196e329eaf06d6e2802fed376e7459834236", "size": 567}, "revision_metadata_verified": true}
+{"event": "verified_file", "url": "https://huggingface.co/EleutherAI/pythia-70m/resolve/a39f36b100fe8a5377810d56c3f4789b9c53ac42/tokenizer.json", "path": "artifacts\\donor\\tokenizer.json", "bytes": 2113710, "sha256": "c24618a1b3e6a38167beff1c72cffd126c3a66254347304b50547d12c5f25624", "remote_metadata": {"rfilename": "tokenizer.json", "blobId": "f74dfbfab8f97770a87769c739fb080c21c8bacc", "size": 2113710}, "revision_metadata_verified": true}
+{"event": "verified_file", "url": "https://huggingface.co/EleutherAI/pythia-70m/resolve/a39f36b100fe8a5377810d56c3f4789b9c53ac42/tokenizer_config.json", "path": "artifacts\\donor\\tokenizer_config.json", "bytes": 396, "sha256": "70e38394e494931c6f773ba41e19460dd4436526b852207367f04341b4066d3f", "remote_metadata": {"rfilename": "tokenizer_config.json", "blobId": "f1860edb10f80bcaf7b023fce47c68a23b724c23", "size": 396}, "revision_metadata_verified": true}
+{"event": "verified_file", "url": "https://huggingface.co/EleutherAI/pythia-70m/resolve/a39f36b100fe8a5377810d56c3f4789b9c53ac42/special_tokens_map.json", "path": "artifacts\\donor\\special_tokens_map.json", "bytes": 99, "sha256": "6f50ab5a5a509a1c309d6171f339b196a900dc9c99ad0408ff23bb615fdae7ad", "remote_metadata": {"rfilename": "special_tokens_map.json", "blobId": "0204ed10c186a4c7c68f55dff8f26087a45898d6", "size": 99}, "revision_metadata_verified": true}
+{"event": "verified_file", "url": "https://huggingface.co/EleutherAI/pythia-70m/resolve/a39f36b100fe8a5377810d56c3f4789b9c53ac42/README.md", "path": "artifacts\\donor\\README.md", "bytes": 14256, "sha256": "9a572054d777a1380b67740844abf986e5e077f53e518afbf7dd2193935f4de7", "remote_metadata": {"rfilename": "README.md", "blobId": "df0253c0ab197de15c12fa7fbb7edcca9b6848a3", "size": 14256}, "revision_metadata_verified": true}
+{"event": "verified_file", "url": "https://huggingface.co/EleutherAI/pythia-70m/resolve/a39f36b100fe8a5377810d56c3f4789b9c53ac42/model.safetensors", "path": "artifacts\\donor\\model.safetensors", "bytes": 166029852, "sha256": "ebfa4e2f18696ebd83716a0d39fe2c025f2ff8483f72a83ca59c475692fc9d15", "remote_metadata": {"rfilename": "model.safetensors", "blobId": "dc22a265ac0a56d7d600eb5e704a949c8e37a044", "size": 166029852, "lfs": {"sha256": "ebfa4e2f18696ebd83716a0d39fe2c025f2ff8483f72a83ca59c475692fc9d15", "size": 166029852, "pointerSize": 134}}, "revision_metadata_verified": true}
+`torch_dtype` is deprecated! Use `dtype` instead!
+{"event": "verified_file", "url": "https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/wikitext-2-raw-v1/train-00000-of-00001.parquet", "path": "data\\source_train.parquet", "bytes": 6357543, "sha256": "e83889baabc497075506f91975be5fac0d45c5290b6b20582c8cd1e853d0c9f7", "remote_metadata": {"rfilename": "wikitext-2-raw-v1/train-00000-of-00001.parquet", "blobId": "f0ce4bc13873f9e74671a2fbf874f54f85110fc1", "size": 6357543, "lfs": {"sha256": "e83889baabc497075506f91975be5fac0d45c5290b6b20582c8cd1e853d0c9f7", "size": 6357543, "pointerSize": 132}}, "revision_metadata_verified": true}
+{"event": "verified_file", "url": "https://huggingface.co/datasets/Salesforce/wikitext/resolve/b08601e04326c79dfdd32d625aee71d232d685c3/README.md", "path": "data\\DATASET_CARD.md", "bytes": 10464, "sha256": "d5aabf145d341366745ac703b5844c442c143943b6c77929481395c822b1c28c", "remote_metadata": {"rfilename": "README.md", "blobId": "2a4fec2bc8df76c9d4da1c8e8865b625eb221c76", "size": 10464}, "revision_metadata_verified": true}
+{
+  "event": "prepared",
+  "inspection": {
+    "input_shape": [
+      50304,
+      512
+    ],
+    "output_shape": [
+      50304,
+      512
+    ],
+    "same_parameter_object": false,
+    "same_storage": false,
+    "config_tie_word_embeddings": false,
+    "unique_parameters": 70426624,
+    "all_parameter_objects": 76,
+    "tokenizer_length": 50277,
+    "eos_token_id": 0,
+    "pad_token_id": null,
+    "output_bias": false,
+    "continuous_rms_input": 0.0883883461356163,
+    "continuous_rms_output": 0.0883883461356163,
+    "input_explained_variance": 0.44482465511345426,
+    "output_explained_variance": 0.5891101235344535
+  },
+  "data_counts": {
+    "train": {
+      "raw_tokens_including_eos": 393082,
+      "blocks": 3071,
+      "valid_prediction_tokens": 390011
+    },
+    "dev": {
+      "raw_tokens_including_eos": 63094,
+      "blocks": 493,
+      "valid_prediction_tokens": 62601
+    }
+  },
+  "common_hash": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794"
+}

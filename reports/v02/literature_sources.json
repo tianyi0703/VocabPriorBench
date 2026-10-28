@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "accessed_date_local": "2026-10-22",
+  "timezone": "Asia/Shanghai",
+  "scope": "Only the two original full texts specified in CODEX_V02_VocabPriorBench.txt; directed sections, no open-ended review.",
+  "requested_sources_accessed": 2,
+  "successful_full_text_accesses": 2,
+  "access_failures": [],
+  "author_experiments_reproduced": false,
+  "gpu_used_by_literature_task": false,
+  "corpus_or_holdout_read_or_hashed": false,
+  "models_or_other_datasets_downloaded": false,
+  "full_coverage_of_identical_project_question": "NOT_ESTABLISHED",
+  "paper_readiness": "NOT_ESTABLISHED",
+  "sources": [
+    {
+      "id": "han_2026_ngram_memories",
+      "title": "N-Gram Memories at Two Bits: Quantizing Lookup Tables in Large Language Models",
+      "authors": ["Donghoon Han", "Minseop Jung", "Dong Woo Kwak", "SeungJae Lee", "Junhoo Lee"],
+      "year": 2026,
+      "arxiv_id": "2610.21810",
+      "requested_full_text_url": "https://arxiv.org/html/2610.21810",
+      "version_pinned_full_text_url": "https://arxiv.org/html/2610.21810v3",
+      "metadata_url": "https://arxiv.org/abs/2610.21810",
+      "doi": "10.48550/arXiv.2610.21810",
+      "actual_version": "v3",
+      "version_utc": "2026-10-21T01:39:30Z",
+      "submission_history_utc": {
+        "v1": "2026-10-15T12:57:19Z",
+        "v2": "2026-10-16T03:50:54Z",
+        "v3": "2026-10-21T01:39:30Z"
+      },
+      "version_evidence": "Official abstract page states last revised 21 Oct 2026 (this version, v3) and gives the v3 submission timestamp; explicit v3 HTML was also successfully opened.",
+      "access": "READ_ORIGINAL_HTML_AND_VERSION_METADATA",
+      "locators": [
+        "Section 2.1 Conditional Memory as Selective Lookup, equation 1",
+        "Section 4.3 Effect of Row-wise Scaling, Table 4",
+        "Appendix E.1, Table 18",
+        "Appendix E.2 Scale choices and data / Predictions and evaluation / Observed gains and prediction errors, Table 19",
+        "Appendix F.2, equations 8-14",
+        "Appendix F.3 Perturbations through the readout"
+      ],
+      "verified_evidence": {
+        "scale_controls": "Global gain, per-row LS and original-row norm restoration; LS and restored norm share codes and bytes.",
+        "held_out_prediction": "Gain rules fixed before test splits. Primary local-quadratic predictor fails at multiple operating points; secondary calibration quadratic has correct direction in the five resolved cells. Some code/Wikipedia test texts reuse the earlier benchmark.",
+        "mathematical_boundary": "For e=ru, unit decoded v and c=u^T v, row-coordinate LS gain is rc; norm-restoring gain is r. Network-metric optimal gain need not equal either.",
+        "perturbation_boundary": "F.3 compares equal-energy norm, direction and projection-subspace perturbations in selective memory; not random-student output training."
+      },
+      "project_difference": "Selective conditional-memory lookup in an existing model versus a frozen dense output table with a retrained random student; setting difference alone is not substantive novelty.",
+      "not_verified": ["Author code execution", "All released code/checkpoints/data availability", "Independent numerical reproduction", "Literature-wide absence of complete overlap"]
+    },
+    {
+      "id": "xu_2024_onebit",
+      "title": "OneBit: Towards Extremely Low-bit Large Language Models",
+      "authors": ["Yuzhuang Xu", "Xu Han", "Zonghan Yang", "Shuo Wang", "Qingfu Zhu", "Zhiyuan Liu", "Weidong Liu", "Wanxiang Che"],
+      "year": 2024,
+      "venue": "38th Conference on Neural Information Processing Systems (NeurIPS 2024)",
+      "version": "Official NeurIPS 2024 conference PDF",
+      "full_text_url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/7a7a3f53faafc0161be0fcb57e5fa078-Paper-Conference.pdf",
+      "access": "READ_ORIGINAL_OFFICIAL_PDF",
+      "metadata_evidence": "Title and eight authors are on PDF page 1; the footer identifies NeurIPS 2024.",
+      "locators": ["Section 3.2, equation 3, Figure 2 (PDF page 4)", "Section 3.3, equations 4-5 (PDF pages 4-5)", "Section 3.4 Knowledge Transfer (PDF page 5)"],
+      "verified_evidence": {
+        "representation": "Sign matrix with two FP16 value vectors g and h; W approximately sign(W) elementwise-multiplied by an outer-product amplitude ab^T.",
+        "training": "Quantization-aware knowledge distillation trains the underlying quantized-layer parameters and g/h, using teacher logits and hidden states.",
+        "storage_boundary": "The paper discusses INT1-packed sign matrices at inference; this project uses FP32 frozen code tables and does not inherit that storage/compute result."
+      },
+      "project_difference": "Frozen low-dimensional output-table controls with an independently initialized student, rather than pretrained-weight quantization and teacher distillation; not a novelty proof.",
+      "not_verified": ["Author code execution", "Official repository and checkpoint completeness", "Independent reproduction", "All sign/amplitude methods outside this directed source"]
+    }
+  ],
+  "claims_not_supported_as_novel": [
+    "Restoring original row norms",
+    "Separating sign/direction from floating amplitude",
+    "A held-out gain prediction test by itself",
+    "A different model setting or a residual by itself"
+  ],
+  "errata_evidence": {
+    "report_margin_location": "reports/v01/V01_REPORT.md:173",
+    "candidate_margin_location": "reports/v01/RESIDUAL_HYPOTHESIS_CANDIDATE.md:7-8",
+    "candidate_metric": "Unweighted maximum cosine-neighbor margin; training frequencies stratify/sort queries, not weight the margin.",
+    "v01_snapshot_manifest": "runs/v01_20261022/snapshot/SNAPSHOT_MANIFEST.json",
+    "v01_snapshot_sealed_utc": "2026-10-22T02:22:16Z",
+    "candidate_present_in_snapshot_manifest": false,
+    "blind_state_independently_verified_from_bundle": false,
+    "trajectory_source": "runs/v01_20261022/snapshot/scripts/v01/run_gpu.py",
+    "monotonic_start_line": 80,
+    "utc_start_line": 90,
+    "wall_elapsed_line": 134,
+    "external_supervisor_record": "runs/v01_20261022/supervisor_result.json",
+    "external_start_utc": "2026-10-22T02:23:25Z",
+    "external_end_utc": "2026-10-22T02:28:38Z",
+    "external_elapsed_seconds": 312.71703610004624,
+    "v02_requirement": "Record each trajectory UTC and monotonic start adjacent at the same code location; actual execution verification belongs to the V0.2 snapshot/log audit.",
+    "legacy_files_modified": false
+  }
+}

@@ -1,0 +1,70 @@
+version: V0.2
+run_name: v02_20261022_193903
+report_directory: reports/v02
+seeds: [1729, 2718]
+conditions: [C, U, RS, S]
+run_order:
+  '1729': [C, U, RS, S]
+  '2718': [S, RS, U, C]
+reuse:
+  v01_manifest: reports/v01/source_manifest.json
+  selection: reports/v01/data_selection.json
+  codes: artifacts/codes.pt
+  packed: data/packed.pt
+  prior: runs/v01_20261022/private/prepared.pt
+  common_init_template: runs/v01_20261022/private/common_init_{seed}.pt
+  block_order_template: runs/v01_20261022/block_order_{seed}.json
+  model_source: runs/v01_20261022/snapshot/src/vocabpriorbench
+  v01_metrics: runs/v01_20261022/metrics_raw.json
+student:
+  dim: 128
+  layers: 2
+  heads: 4
+  ff_dim: 512
+  max_seq_len: 128
+  dropout: 0.0
+vocabulary: 50304
+code_width: 128
+input: original_continuous_frozen
+output_trainable: false
+bias: same_fixed_log_pi_float32
+tables:
+  source: original_initial_output_C
+  norm_dtype: float64
+  storage_dtype: float32
+  zero_row_direction: original_sign_row
+  sign_zero: 1
+  rtol: 0.000002
+  atol: 0.0000002
+  global_recalibration: false
+training:
+  optimizer_steps: 767
+  epochs_max: 1
+  microbatch: 2
+  gradient_accumulation: 2
+  sequence_length: 128
+  learning_rate: 0.0003
+  lr_schedule: constant
+  optimizer: AdamW
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  eps: 0.00000001
+  fused: true
+  max_grad_norm: 1.0
+  precision: bf16_autocast_fp32_parameters
+  evaluation_steps: [0, 100, 767]
+  main_endpoint: 767
+  warmup_optimizer_steps: 0
+  allow_tf32: false
+screen:
+  tau_nats_per_token: 0.05
+  bridge_tolerance: 0.001
+  priority: [NORM_DOMINANT_IN_THIS_SCREEN, DIRECTION_RESIDUAL_AT_BOTH_NORMS, INTERACTION_OR_COMPENSATION, INCONCLUSIVE_OR_OTHER_PATTERN]
+budget:
+  gpu_complete_process_limit_seconds: 1800
+  gpu_cleanup_reserve_seconds: 60
+  estimated_gpu_job_seconds: 400
+  cpu_complete_process_limit_seconds: 900
+  previous_v0_seconds: 19.406
+  previous_v01_seconds: 312.71703610004624
+  previous_project_seconds: 332.12303610004624

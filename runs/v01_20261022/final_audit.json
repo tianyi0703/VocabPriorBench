@@ -1,0 +1,11 @@
+{
+  "snapshot_and_input_hashes": true,
+  "holdout_opened": false,
+  "full_dev_valid_targets": true,
+  "new_gpu_budget": true,
+  "cpu_conservative_charged_budget": true,
+  "old_source_history": "LIMITED_V0_HISTORY",
+  "all_12_trajectories_one_pass": true,
+  "all_common_initializations_and_orders_paired": true,
+  "numerical_invariants_and_saved_checkpoints": true
+}

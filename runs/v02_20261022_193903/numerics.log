@@ -1,0 +1,9 @@
+test_all_four_frozen_interventions_and_public_updates (test_v02_tables.RowNormDirectionTests.test_all_four_frozen_interventions_and_public_updates) ... ok
+test_description_reports_actual_hashes_norms_and_metadata (test_v02_tables.RowNormDirectionTests.test_description_reports_actual_hashes_norms_and_metadata) ... ok
+test_exact_anchors_zero_tiny_and_nonunit_rows (test_v02_tables.RowNormDirectionTests.test_exact_anchors_zero_tiny_and_nonunit_rows) ... ok
+test_explicit_output_scores_then_unscaled_bias_and_paired_states (test_v02_tables.RowNormDirectionTests.test_explicit_output_scores_then_unscaled_bias_and_paired_states) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.511s
+
+OK

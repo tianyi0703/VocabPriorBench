@@ -1,0 +1,12 @@
+test_a_b_saved_common_state_and_forward_identical (test_numerics.NumericalContractTests.test_a_b_saved_common_state_and_forward_identical) ... ok
+test_all_arms_common_parameters_update_and_codes_obey_freeze (test_numerics.NumericalContractTests.test_all_arms_common_parameters_update_and_codes_obey_freeze) ... ok
+test_attention_padding_masks_keys_and_remains_finite (test_numerics.NumericalContractTests.test_attention_padding_masks_keys_and_remains_finite) ... ok
+test_causality_future_does_not_change_past (test_numerics.NumericalContractTests.test_causality_future_does_not_change_past) ... ok
+test_hashes_are_stable_sensitive_and_do_not_alias (test_numerics.NumericalContractTests.test_hashes_are_stable_sensitive_and_do_not_alias) ... ok
+test_next_token_shift_padding_and_token_weighted_loss (test_numerics.NumericalContractTests.test_next_token_shift_padding_and_token_weighted_loss) ... ok
+test_untied_code_identity_and_unique_parameter_counts (test_numerics.NumericalContractTests.test_untied_code_identity_and_unique_parameter_counts) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.898s
+
+OK

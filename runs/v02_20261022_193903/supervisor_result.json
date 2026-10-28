@@ -1,0 +1,14 @@
+{
+  "command": [
+    "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+    "-u",
+    "F:\\VocabPriorBench\\runs\\v02_20261022_193903\\snapshot\\scripts\\v02\\run_gpu.py"
+  ],
+  "supervisor_start_utc": "2026-10-22T11:48:14Z",
+  "start_monotonic_seconds": 485036.2932469,
+  "status": "COMPLETED",
+  "pid": 43192,
+  "supervisor_end_utc": "2026-10-22T11:50:51Z",
+  "elapsed_seconds": 156.68108119996032,
+  "exit_code": 0
+}

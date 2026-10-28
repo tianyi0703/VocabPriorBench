@@ -1,0 +1,38 @@
+{
+  "limit_seconds": 900,
+  "cumulative_seconds": 23.772711600002367,
+  "stages": [
+    {
+      "stage": "prepare",
+      "command": [
+        "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+        "-u",
+        "F:\\VocabPriorBench\\runs\\v02_20261022_193903\\snapshot\\scripts\\v02\\prepare.py"
+      ],
+      "start_utc": "2026-10-22T11:46:59Z",
+      "end_utc": "2026-10-22T11:47:17Z",
+      "elapsed_seconds": 17.968917299993336,
+      "exit_code": 0,
+      "error": null
+    },
+    {
+      "stage": "numerics",
+      "command": [
+        "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "F:\\VocabPriorBench\\runs\\v02_20261022_193903\\snapshot\\tests",
+        "-p",
+        "test_v02_tables.py",
+        "-v"
+      ],
+      "start_utc": "2026-10-22T11:47:17Z",
+      "end_utc": "2026-10-22T11:47:23Z",
+      "elapsed_seconds": 5.803794300009031,
+      "exit_code": 0,
+      "error": null
+    }
+  ]
+}

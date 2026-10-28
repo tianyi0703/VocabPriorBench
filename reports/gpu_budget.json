@@ -1,0 +1,16 @@
+{
+  "jobs": [
+    {
+      "start_utc": "2026-10-21T12:15:17Z",
+      "end_utc": "2026-10-21T12:15:28Z",
+      "wall_seconds": 19.406,
+      "status": "COMPLETED",
+      "run_dir": "F:\\VocabPriorBench\\runs\\v0_20261021",
+      "command": " .venv\\Scripts\\python.exe -u scripts\\run_v0.py",
+      "cuda_runner_wall_seconds": 11.211335600004531,
+      "wall_scope": "whole supervisor interval including child imports; monotonic measurement",
+      "external_measurement_source": "runs/supervisor_result.json"
+    }
+  ],
+  "cumulative_seconds": 19.406
+}

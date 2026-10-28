@@ -1,0 +1,37 @@
+{
+  "policy": "new V02 files hashed as bytes only, no checkpoint loaded; excluded from ZIP",
+  "files": {
+    "runs/v02_20261022_193903/private/final_1729_C.pt": {
+      "bytes": 53501305,
+      "sha256": "b829bb06b5880f93e36e2a5c89b87144f137913f25fe56cbfc1c4972ada17917"
+    },
+    "runs/v02_20261022_193903/private/final_1729_U.pt": {
+      "bytes": 53501305,
+      "sha256": "036c098d60e197ba0bf435a98f0e9d20a95042afbdbdf4dd7293ad27fe337852"
+    },
+    "runs/v02_20261022_193903/private/final_1729_RS.pt": {
+      "bytes": 53501339,
+      "sha256": "b6e5dc663b57c155de458d31509e1ff2237b041cf7b9178a43e28c4124293570"
+    },
+    "runs/v02_20261022_193903/private/final_1729_S.pt": {
+      "bytes": 53501305,
+      "sha256": "a31afa5ba670f91142bd91777eacadc597c6094231a12e9eb33e7b437d079928"
+    },
+    "runs/v02_20261022_193903/private/final_2718_S.pt": {
+      "bytes": 53501305,
+      "sha256": "c65f13cada5b8211c85728585147803cf8b1de3a839e850bbae898c9d722912f"
+    },
+    "runs/v02_20261022_193903/private/final_2718_RS.pt": {
+      "bytes": 53501339,
+      "sha256": "cd5d7ceb9282b1ce02dbd8e381172e8080cfccf3667e98a4adcd81900a0eb1fc"
+    },
+    "runs/v02_20261022_193903/private/final_2718_U.pt": {
+      "bytes": 53501305,
+      "sha256": "c84620f5d02c9dfddd43bf14fd51a81b37f04de711b3bdd05ee3b573978e80ac"
+    },
+    "runs/v02_20261022_193903/private/final_2718_C.pt": {
+      "bytes": 53501305,
+      "sha256": "30b6671c8e7a1779f6aee26f48fd64ccee77c1e2f00627d409482ae13cf24155"
+    }
+  }
+}

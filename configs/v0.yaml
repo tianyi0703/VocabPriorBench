@@ -1,0 +1,41 @@
+seed: 1729
+donor:
+  repo: EleutherAI/pythia-70m
+  revision: a39f36b100fe8a5377810d56c3f4789b9c53ac42
+  checkpoint: step143000/main (resolved once to immutable commit)
+data:
+  repo: Salesforce/wikitext
+  revision: b08601e04326c79dfdd32d625aee71d232d685c3
+  subset: wikitext-2-raw-v1
+  source_file: wikitext-2-raw-v1/train-00000-of-00001.parquet
+  documents: 128
+  train_documents: 96
+  dev_documents: 16
+  holdout_documents: 16
+student:
+  dim: 128
+  layers: 2
+  heads: 4
+  ff_dim: 512
+  max_seq_len: 128
+  dropout: 0.0
+code_width: 128
+pca: centered_exact_512_by_512_covariance_eigh_cpu_float64
+code_rms: 0.08838834764831845
+unigram_bias: false
+training:
+  arms: [A, B, C]
+  optimizer_steps: 100
+  microbatch: 2
+  gradient_accumulation: 2
+  sequence_length: 128
+  learning_rate: 0.0003
+  lr_schedule: constant
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  precision: bf16_autocast_fp32_parameters
+  warmup_forward_backward_only: 3
+  stable_timing_start_step: 11
+  eval_blocks: 32
+  gpu_wall_limit_seconds: 7200
+  estimated_job_seconds: 600

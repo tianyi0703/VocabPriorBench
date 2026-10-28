@@ -1,0 +1,187 @@
+你正在继续项目 F:\VocabPriorBench。请读取现有项目与下列指令，执行 V0.1：输出端与词频先验诊断。不要另建研究方向，不要重做已完成的 V0，不要直接启动 V0_REPORT 中七臂、两语料、三 seed 的 12 小时方案。
+
+一、当前状态与本轮目标
+
+V0 已完成三臂工程短跑：
+- A：连续 PCA128 输入、输出码表均可训练。
+- B：相同初值的连续输入、输出码表均冻结。
+- C：输入、输出同时 sign 后冻结。
+- 公共主干与投影 444,928 参数；两张表共 12,877,824 参数。
+- 每臂 100 步、50,800 个有效预测目标；一个 seed。
+- V0 的配置、计数与汇总相互一致，但四份附件本身不足以独立验证原始源码、测试与 CUDA 事件日志。
+- V0 状态 LITERATURE=UNRESOLVED、NEXT=RESOLVE_NOVELTY，不代表研究被否定，也不代表新颖性成立。
+
+本轮只回答：
+在固定输入端之后，连续输出码表的冻结代价、以及冻结输出码表的 sign 代价，对“所有对应条件都获得相同的固定训练 unigram 输出偏置”是否敏感？是否留下值得进一步区分原因的残差？
+
+这是一次有明确终点的机制筛选，不是论文主实验。加入 unigram 偏置、冻结输出空间的线性限制都不是本项目的新方法或新定理。本轮不要求先证明绝对新颖再进行任何工作，也不要用一段泛泛的 RESOLVE_NOVELTY 代替以下已限定的实际诊断。
+
+二、硬范围
+
+1. 仍在现有 .venv、本机 RTX 4060 Laptop 上执行；CPU 分析明确使用 CPU。不要用其他机器或付费 API。
+2. 只用已下载并锁定的 Pythia-70m、现有码表/变换、现有 train/dev。不得新增 donor、语料、码宽或架构。
+3. 保留 V0 报告、配置、原始日志及产物；新增 configs/v01.yaml、reports/v01/、runs/v01_*。不得覆盖原始结果来“修正历史”。
+4. 本轮所有新增 GPU 作业的完整进程累计墙钟上限为 3,600 秒，含导入、预检、热身、评估、保存、失败和重试；串行运行，不需要用满预算。V0 的 19.406 秒单独保留，本轮新增与项目累计分别记账。
+5. CPU 数值诊断累计上限 30 分钟；到限输出已有结果与未收敛状态。该上限不用于把未收敛数值伪装为最优值。
+6. 不做超参数搜索，不追加种子，不打开封存 holdout，不写投稿论文，不把两个 seed 当成统计等价或普适性证据。
+7. 不为本轮搭建通用 benchmark 平台或新 CUDA kernel。只实现诊断真正需要的改动。
+
+三、先补齐最小证据链，不为此重跑 V0 GPU
+
+阅读：
+- reports/V0_REPORT.md、reports/source_manifest.json、reports/resource_profile.json；
+- configs/v0.yaml、src/vocabpriorbench/model.py；
+- 实际使用的 prepare.py、run_v0.py、supervise_v0.py、check_numerics.py；
+- runs/COMMANDS.md、numerical_checks.log、gpu_console.log、artifact_audit.json；
+- 对应运行的 environment.json、events.jsonl、resources/monitor 与 supervisor_result.json。
+按实际存在路径查找，不编造缺失内容。
+
+只审计与本轮有关的要点：因果遮罩、标签移位/padding、有效目标计数、冻结规则、公共初始化、实际 CUDA 同步计时和保存结果的对应关系。
+
+source_manifest 中 prepare.py、build_report.py、supervise_v0.py 的执行前/交付版哈希不同。若有真实旧源码，给实际 diff 与影响说明；若旧源码不在，明确无法仅凭哈希恢复。不得伪造旧版或把猜测写成已确认的元数据改动。只要现有码表、数据和初态产物可核对，且本轮执行版本经审计并完整封存，可继续 V0.1；旧 prepare 文本缺失本身不自动要求重跑 V0。
+
+V0 的 runner UTC 约为 12:15:17–12:15:28，内部耗时 11.211 秒；supervisor 完整进程为 19.406 秒。为复核生成一个规范化副本/补充记录，分别命名 runner_start_utc、runner_end_utc、runner_elapsed_seconds、supervisor_elapsed_seconds。未记录的 supervisor 起止 UTC 用 null/unknown，不反推伪精确时间。保留 19.406 来自原工具输出后归档的事实。
+
+冻结本轮实际执行源码快照、配置和输入产物哈希。只有发现会影响比较的实质错误且无法修正/明确隔离时，才停止新增 GPU 比较并报告具体阻塞。
+
+四、定向文献与数学核对
+
+沿用 V0 已读文献，不重新做大范围综述。本轮补读以下原始全文的相关部分：
+1. A Natural Bias for Language Generation Models，ACL 2023：
+   https://aclanthology.org/2023.acl-short.22/
+   https://aclanthology.org/2023.acl-short.22.pdf
+2. Breaking the Softmax Bottleneck，ICLR 2018：
+   https://arxiv.org/html/1711.03953v4
+3. Why do small language models underperform? Studying Language Model Saturation via the Softmax Bottleneck：
+   https://arxiv.org/html/2404.07647v1
+4. Softmax Bottleneck Makes Language Models Unable to Represent Multi-mode Word Distributions，ACL 2022：
+   https://aclanthology.org/2022.acl-long.554/
+同时对照种子论文 §2、§6：
+   https://arxiv.org/html/2610.22428v1
+
+最多形成一页差异表：已有结果、本轮诊断、本轮不能主张的创新、仍需验证的具体问题。若有论文确已完整回答剩余拟议问题，记录精确证据并停止以该问题为目标的扩展；一般的相关性不等于完整覆盖。
+
+数学说明必须准确：
+- 以列向量记号，固定输出表 C_out 时 logits(x)=C_out q(x)，故 logits 受固定列空间约束。
+- final_LN 有可训练 bias，因此不能说没有独立输出 bias 就完全无法学习词频；它只能经同一固定输出子空间产生偏置。
+- 对严格为正的分布 pi，常量输出可精确表示它要求 log(pi) 属于 col(C_out)+span(1)。
+- 所有现有臂的 hidden/code width 都是 128。即使未来使用 512 维表，只要学生 hidden 仍是 128 且输出为线性映射，不能称为解除 128 维 softmax rank 限制。
+- sign 码的唯一性、每个 token 能否成为 argmax、任意条件概率分布的可表示性，是不同问题。不得从低维或邻距直接推出“某 token 永远无法预测”。
+- 增加固定 bias 同时改变频率信息与 logits 所在的仿射空间；结果只能证明对该干预敏感，不能把唯一因果机制直接命名为“词频解释完毕”。
+
+五、先写并锁定 V0.1 实验契约
+
+在任何新训练结果出现之前，写 reports/v01/EXPERIMENT_CONTRACT.md 和实际配置 configs/v01.yaml，包含下列数据规则、六个条件、两个 seed、最终评价点、预算、指标和筛选规则。该契约是本轮探索性筛选的事前约定，不是未见过开发集的独立确认实验。
+
+数据保持 V0 文档划分、tokenizer、50304 个输出类别、打包与标签规则。
+- 从现有 train 中选完整块，预先固定一个能被有效 batch size 整除的块集合；选取不得看新结果。
+- 每条轨迹最多遍历这个固定集合一次，不重复补足 token 预算；明确列出舍弃的尾块及理由。
+- 两个 seed 为 1729、2718；每个 seed 内六条件使用完全相同的初始化文件与块顺序。跨 seed 改变初始化/排列，块集合相同。
+- 由上述集合的有效 next-token 目标计数 n_v 计算唯一共享先验：
+  pi_v=(n_v+0.1)/(N+0.1*50304)。
+  0.1 是预先固定的零频平滑约定，不调优、不扫描。
+- 只计入损失中实际有效的目标；包括有效 EOS，排除 padding/忽略标签。先验不得使用 dev 或 holdout。
+- prior 在第 0 步利用了整个选定训练集合的频率，因此它有一次训练集统计遍历的成本与信息。单独记录这次遍历，不能只按在线更新时的 token 数声称严格的数据效率优势。
+- 使用现有完整 dev 的全部有效目标评估，不再只取 32 块；holdout 保持封存。
+- 固定评估点为 step 0、step 100、最后一个完整 epoch 的终点；终点才是主要筛选点，不按 dev 选择最好 checkpoint。
+
+六、CPU 无上下文输出诊断
+
+只对初始连续输出表和初始 sign 输出表，各拟合一个 128 维常量向量 a：
+  q_a = softmax(C_out @ a)
+  L(a) = logsumexp(C_out @ a) - pi^T(C_out @ a)
+
+使用 float64、稳定 logsumexp 和可复查梯度；从零向量起，固定优化器、容差与迭代上限，不按 dev 选择它们。可用现有依赖中的 L-BFGS。记录实际停止条件、迭代数、目标值、梯度范数与耗时。
+
+分别报告：
+- 平滑 pi 的熵 H(pi)；
+- 已实现的 L(a)-H(pi)，仅在收敛证据充分时称“近似拟合最优差距”，否则称当前优化残差；
+- train 拟合得到的 q_a 在完整 dev 上的 NLL；
+- 直接使用训练 pi 的完整 dev NLL；
+- C_out 的数值秩/列空间诊断如确有需要，使用小矩阵或 V×128 分解，不构造 V×V 矩阵。
+- 验证加入 b=log(pi) 且 a=0 时，理论上 softmax(b)=pi；实际数值在预设容差内一致。
+
+这只测“单一、无上下文分布”的表达与拟合，绝不能把它称为有上下文语言模型 NLL 下界。不得仅凭该诊断就宣称解释了 V0 的训练差距。
+
+七、执行六条件输出端对照
+
+输入一律为同一份连续 PCA128 冻结 C_in。主干、输入投影、输出投影均可训练，维度与 V0 相同。只改变输出码表及固定输出 bias：
+
+L0：连续输出表可训练，bias 为全零固定向量。
+F0：连续输出表冻结，bias 为全零固定向量。
+S0：sign 输出表冻结，bias 为全零固定向量。
+Lp：连续输出表可训练，bias 固定为 log(pi)。
+Fp：连续输出表冻结，bias 固定为同一 log(pi)。
+Sp：sign 输出表冻结，bias 固定为同一 log(pi)。
+
+- L/F 的初始连续输出表逐值相同；S 使用同一 donor/同一 PCA 变换后的预定 sign/RMS 规则。
+- 六条件的输入码表都逐值相同并冻结。S0/Sp 只符号化输出，不能冒充原 V0 的 C。
+- 全零与 log(pi) bias 均作为相同计算路径中的固定 buffer；不训练 bias，不加各条件专用参数。
+- 每个 seed 下主干/投影初态从公共保存文件加载；不要顺序续训，不要加载上一条件最终状态，不共享可被更新的表存储。
+- 保持 lr=3e-4、AdamW、weight_decay=.01、clip=1、seq128、microbatch2、accumulation2、bf16 autocast/FP32参数、dropout0，与 V0 的既定实现一致。
+- 先做必要的短数值检查：同 bias 下 L/F 初态前向一致；输入始终不变；只有 L 条件输出表更新；固定 bias 与冻结表不变；有效计数正确；损失/梯度有限。
+- 沿用已通过且未修改的基础数值检查，不堆叠镜像测试。
+- 两 seed × 六条件共 12 条短轨迹，按事前固定顺序串行，第二 seed 可采用反向条件顺序减少同序影响。
+- 不跑原维 D/E、随机 R、置换 P，不扩模型，不改 tokenizer，不训练到收敛，不把缺少这些基线包装为正式论文实验完备。
+
+预算监督器在启动任何 GPU 进程前检查剩余累计预算。预计无法完成全部轨迹时，保留已完成记录并返回 BUDGET_INCOMPLETE，不根据已观察结果缩短某一臂或挑选有利子集。数值错误的修复及重跑也计入上限；任何实现改动必须对受影响比较保持一致，并保留被取代运行。
+
+本轮不要求持续热稳态测速；短跑速度仅用于记录实际开销，不外推 12 小时或更大模型。仍报告实际 allocated/reserved、全设备占用的不同口径；float32 sign 表仍不是 1-bit GPU 存储。
+
+八、主要指标和一次性筛选规则
+
+每个 seed、每个预定评价点分别报告：
+  delta_freeze_0 = NLL(F0)-NLL(L0)
+  delta_freeze_p = NLL(Fp)-NLL(Lp)
+  delta_sign_0   = NLL(S0)-NLL(F0)
+  delta_sign_p   = NLL(Sp)-NLL(Fp)
+
+分别列出：
+  interaction_freeze = delta_freeze_p-delta_freeze_0
+  interaction_sign   = delta_sign_p-delta_sign_0
+
+保留正负号，不能只报所有模型加 bias 后都变好的总量。不要直接将这些新条件与 V0 的 A/B/C 组成统计对照。
+另报辅助量 context_gain=NLL(训练 pi 在 dev)-NLL(模型在 dev)。它表示超过固定 unigram 的预测收益，不直接等于语义能力。若模型尚未在两个 seed 上稳定优于 unigram，即使存在残差，也要明确本轮尚不足以讨论成熟的上下文建模机制，不自动据此扩大训练。
+
+保存 token 加权 NLL 总和与分母；如现有打包元数据支持，可保存逐文档统计。没有可靠映射则明确不支持文档级重采样，不伪造映射。两个 seed 的原始结果都要展示，不把 token、块或文档当成独立训练 seed。
+
+为让本轮筛选有终点，使用 tau=0.05 nats/token 作为预算决策阈值；它只是本项目探索性容忍值，同 tokenizer 下约相当于 5.1% PPL 比值，不来自文献，不是显著性、等价或发表标准，不得事后调整。
+
+对冻结与 sign 两个效应分别在最终评价点分类：
+1. PRIOR_SENSITIVE_IN_THIS_SCREEN：
+   两 seed 的无先验差距方向相同且各自绝对值都大于 tau；加入先验后两 seed 各自的绝对差距都不超过 tau，且各自不超过原无先验差距的 25%。
+   解释：当前差距对共同先验干预敏感，不值得仅凭这个差距启动 12 小时扩展。不能说全部因果机制已被证明。
+2. RESIDUAL_TO_EXPLAIN：
+   加先验后两 seed 的差距方向相同，绝对值各自仍大于 tau。
+   解释：存在本轮值得解释的残差；没有证明新颖、语义损失、最终优劣或普适性。
+3. NO_MATERIAL_GAP_IN_THIS_SCREEN：
+   两 seed 在有/无先验下的绝对差距均不超过 tau。
+   解释：这个小场景未提供超过筛选阈值的信号，不是正式等价结论。
+4. 其余为 INCONCLUSIVE；不要自动追加 seed、改阈值、改终点或改数据救结果。
+
+若冻结/sign 结论不同，分别保留，不合并为一个笼统成功/失败。
+
+九、交付与停止
+
+新增：
+- reports/v01/V01_REPORT.md：证据链结论、文献差异、CPU诊断、六条件两seed完整结果、上述差值/交互与分类、限制。
+- reports/v01/EXPERIMENT_CONTRACT.md 与 configs/v01.yaml。
+- reports/v01/diagnostics.json、metrics.csv、resource_profile.json、source_manifest.json。
+- 真实执行源码快照、命令、数值检查输出、逐步事件日志、预算监督记录。
+- V01_REVIEW_BUNDLE.zip：包含上述报告/配置、必要源码、V0关键原始检查与事件日志、本轮日志、哈希清单；不打包 .venv、模型权重、原始或分词语料。报告中列出打包清单。
+
+V01_REPORT 开头使用：
+EVIDENCE = VERIFIED_FOR_V01 / LIMITED_V0_HISTORY / BLOCKED
+NUMERICS = PASS / FAIL / NOT_RUN
+DIAGNOSTIC = COMPLETED / PARTIAL / NOT_RUN
+OUTPUT_FREEZE = PRIOR_SENSITIVE_IN_THIS_SCREEN / RESIDUAL_TO_EXPLAIN / NO_MATERIAL_GAP_IN_THIS_SCREEN / INCONCLUSIVE / NOT_RUN
+OUTPUT_SIGN = 同上
+RESOURCE = WITHIN_1H / BUDGET_INCOMPLETE / NOT_RUN
+NEXT = DRAFT_RESIDUAL_HYPOTHESIS / PAUSE_CURRENT_CLAIM / INCONCLUSIVE / FIX_IMPLEMENTATION
+
+只有至少一个效应留下 RESIDUAL_TO_EXPLAIN，且文献没有明确完整覆盖拟议剩余问题时，附一页下一阶段候选设计：具体要预测的残差、一个在训练前可计算的候选预测量、词频/范数/谱等最简单竞争解释、未参与选择的验证条件、什么结果会否定它。不把候选统计量相关性直接当因果。
+
+若结果只支持已知先验机制或没有可用信号，明确暂停当前差距作为独立论文贡献；保留工程资产，不宣称整个研究领域无价值。
+若结果不足，列明唯一最关键缺口和最小后续证据需求，不自动开启下一轮研究。
+本轮结束即停止，不启动 V1 正式训练，不自动转向其他项目。最后给出实际执行命令、实际GPU累计时间、四个最关键输出路径及可以/不可以下的结论。
+

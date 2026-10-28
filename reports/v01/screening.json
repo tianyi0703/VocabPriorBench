@@ -1,0 +1,38 @@
+{
+  "tau": 0.05,
+  "endpoint": 767,
+  "OUTPUT_FREEZE": "PRIOR_SENSITIVE_IN_THIS_SCREEN",
+  "OUTPUT_SIGN": "RESIDUAL_TO_EXPLAIN",
+  "NEXT": "DRAFT_RESIDUAL_HYPOTHESIS",
+  "context_gain_positive_both_seeds_by_condition": {
+    "L0": true,
+    "F0": true,
+    "S0": true,
+    "Lp": true,
+    "Fp": true,
+    "Sp": true
+  },
+  "final_contrasts": [
+    {
+      "seed": 1729,
+      "step": 767,
+      "delta_freeze_0": 0.3577617583656689,
+      "delta_freeze_p": -0.01277006279727022,
+      "delta_sign_0": 0.4893892231872039,
+      "delta_sign_p": 0.1686183077365726,
+      "interaction_freeze": -0.37053182116293915,
+      "interaction_sign": -0.3207709154506313
+    },
+    {
+      "seed": 2718,
+      "step": 767,
+      "delta_freeze_0": 0.3739568488182474,
+      "delta_freeze_p": -0.010249442759874938,
+      "delta_sign_0": 0.4797900479543804,
+      "delta_sign_p": 0.1742985766641736,
+      "interaction_freeze": -0.38420629157812236,
+      "interaction_sign": -0.3054914712902068
+    }
+  ],
+  "interpretation": "exploratory engineering/mechanism screen; no equivalence, universal, unique-cause, or novelty claim"
+}

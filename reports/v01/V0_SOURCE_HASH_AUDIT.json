@@ -1,0 +1,288 @@
+{
+  "audit_utc": "2026-10-22T02:11:57.344527+00:00",
+  "method": "Read-only source/log audit and SHA256 comparison; no V0 rerun; no GPU calls; holdout document file neither opened nor hashed.",
+  "source_manifest_current_sha256": "1cfe2ef82ff3118cfd5a898bc4984b62ea47197acd8c5df207b1098ad2af8784",
+  "source_hashes": [
+    {
+      "path": "configs/v0.yaml",
+      "current_sha256": "f776b123153d5cb4de2cbe8ca523b027e0ff2534e1e39d041053cc4286afe145",
+      "recorded_sha256": {
+        "source_files": "f776b123153d5cb4de2cbe8ca523b027e0ff2534e1e39d041053cc4286afe145",
+        "code_files_before_gpu": "f776b123153d5cb4de2cbe8ca523b027e0ff2534e1e39d041053cc4286afe145",
+        "delivery_source_files": "f776b123153d5cb4de2cbe8ca523b027e0ff2534e1e39d041053cc4286afe145"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/archive_supervisor_measurement.py",
+      "current_sha256": "f90ac98ddc34c4084bf9d036c3d4c7914abf357f381d35f3334260c80b80d3bf",
+      "recorded_sha256": {
+        "source_files": null,
+        "code_files_before_gpu": null,
+        "delivery_source_files": "f90ac98ddc34c4084bf9d036c3d4c7914abf357f381d35f3334260c80b80d3bf"
+      },
+      "matches": {
+        "source_files": null,
+        "code_files_before_gpu": null,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/audit_artifacts.py",
+      "current_sha256": "f21798c51eb3fe0f8e02e87f477aa2346641b6702695bc0d8fa58d2160d8c2ae",
+      "recorded_sha256": {
+        "source_files": "f21798c51eb3fe0f8e02e87f477aa2346641b6702695bc0d8fa58d2160d8c2ae",
+        "code_files_before_gpu": "f21798c51eb3fe0f8e02e87f477aa2346641b6702695bc0d8fa58d2160d8c2ae",
+        "delivery_source_files": "f21798c51eb3fe0f8e02e87f477aa2346641b6702695bc0d8fa58d2160d8c2ae"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/build_report.py",
+      "current_sha256": "bd958ba397f90c909f4f37ea3cebb40a7330e89bf3089f9ada57b8c2ebdb4ce3",
+      "recorded_sha256": {
+        "source_files": "8360ae24da43caadadece05166cbc3dfca7ee87335fa91294983ea3b98aae1b4",
+        "code_files_before_gpu": "8360ae24da43caadadece05166cbc3dfca7ee87335fa91294983ea3b98aae1b4",
+        "delivery_source_files": "bd958ba397f90c909f4f37ea3cebb40a7330e89bf3089f9ada57b8c2ebdb4ce3"
+      },
+      "matches": {
+        "source_files": false,
+        "code_files_before_gpu": false,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/check_numerics.py",
+      "current_sha256": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+      "recorded_sha256": {
+        "source_files": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+        "code_files_before_gpu": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+        "delivery_source_files": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/download.py",
+      "current_sha256": "cc23883ce26eef72434c09ed0c327ce8a6b4f50fbe036b7aca6a3de0f3d89d4e",
+      "recorded_sha256": {
+        "source_files": "cc23883ce26eef72434c09ed0c327ce8a6b4f50fbe036b7aca6a3de0f3d89d4e",
+        "code_files_before_gpu": "cc23883ce26eef72434c09ed0c327ce8a6b4f50fbe036b7aca6a3de0f3d89d4e",
+        "delivery_source_files": "cc23883ce26eef72434c09ed0c327ce8a6b4f50fbe036b7aca6a3de0f3d89d4e"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/prepare.py",
+      "current_sha256": "e3a802d2fbe13d33545a999d86935dab1ea49a107b67da1b3fbf3babe9b95af8",
+      "recorded_sha256": {
+        "source_files": "1ac476fd5f19b5d5f38bca2211eb7305a923d38b6884ec34eaa887c5cd47aba3",
+        "code_files_before_gpu": "1ac476fd5f19b5d5f38bca2211eb7305a923d38b6884ec34eaa887c5cd47aba3",
+        "delivery_source_files": "e3a802d2fbe13d33545a999d86935dab1ea49a107b67da1b3fbf3babe9b95af8"
+      },
+      "matches": {
+        "source_files": false,
+        "code_files_before_gpu": false,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/provenance.py",
+      "current_sha256": "ec7bcd76a1c34c54310ed6a3f34bf765ff0fe13c0f96c46cde73de7e260864d9",
+      "recorded_sha256": {
+        "source_files": "ec7bcd76a1c34c54310ed6a3f34bf765ff0fe13c0f96c46cde73de7e260864d9",
+        "code_files_before_gpu": "ec7bcd76a1c34c54310ed6a3f34bf765ff0fe13c0f96c46cde73de7e260864d9",
+        "delivery_source_files": "ec7bcd76a1c34c54310ed6a3f34bf765ff0fe13c0f96c46cde73de7e260864d9"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/run_v0.py",
+      "current_sha256": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+      "recorded_sha256": {
+        "source_files": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+        "code_files_before_gpu": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+        "delivery_source_files": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "scripts/supervise_v0.py",
+      "current_sha256": "b739afeae8fb4df07647967a11255345d337b081625b5e59731875b3befc46a2",
+      "recorded_sha256": {
+        "source_files": "69b90891ab3905add1eea696a89ef2f392c9cfa177ebdc2c43192c51996a24e2",
+        "code_files_before_gpu": "69b90891ab3905add1eea696a89ef2f392c9cfa177ebdc2c43192c51996a24e2",
+        "delivery_source_files": "b739afeae8fb4df07647967a11255345d337b081625b5e59731875b3befc46a2"
+      },
+      "matches": {
+        "source_files": false,
+        "code_files_before_gpu": false,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "src/vocabpriorbench/__init__.py",
+      "current_sha256": "4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9",
+      "recorded_sha256": {
+        "source_files": "4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9",
+        "code_files_before_gpu": "4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9",
+        "delivery_source_files": "4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "src/vocabpriorbench/model.py",
+      "current_sha256": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+      "recorded_sha256": {
+        "source_files": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+        "code_files_before_gpu": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+        "delivery_source_files": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    },
+    {
+      "path": "tests/test_numerics.py",
+      "current_sha256": "d686c959bc8bde472d388647e25d68dd558a363369df945e1d58cabcd5c701f4",
+      "recorded_sha256": {
+        "source_files": "d686c959bc8bde472d388647e25d68dd558a363369df945e1d58cabcd5c701f4",
+        "code_files_before_gpu": "d686c959bc8bde472d388647e25d68dd558a363369df945e1d58cabcd5c701f4",
+        "delivery_source_files": "d686c959bc8bde472d388647e25d68dd558a363369df945e1d58cabcd5c701f4"
+      },
+      "matches": {
+        "source_files": true,
+        "code_files_before_gpu": true,
+        "delivery_source_files": true
+      }
+    }
+  ],
+  "input_artifact_hashes": [
+    {
+      "path": "artifacts/codes.pt",
+      "recorded_sha256": "0339478c73b8621207d11839c22febd10e73d87c4b7ed8e4ed5277c6fc1509c7",
+      "current_sha256": "0339478c73b8621207d11839c22febd10e73d87c4b7ed8e4ed5277c6fc1509c7",
+      "matches": true
+    },
+    {
+      "path": "artifacts/transforms.pt",
+      "recorded_sha256": "b87873ca4c783c17cbc54c66ba0b81e645600c49d8c3ff1a161ebe9d6a0720ca",
+      "current_sha256": "b87873ca4c783c17cbc54c66ba0b81e645600c49d8c3ff1a161ebe9d6a0720ca",
+      "matches": true
+    },
+    {
+      "path": "artifacts/common_init.pt",
+      "recorded_sha256": "a85b51ce75ebea4a6d4560913ee19f16b8743e8f6c7f94d2edfd6bc346d973b6",
+      "current_sha256": "a85b51ce75ebea4a6d4560913ee19f16b8743e8f6c7f94d2edfd6bc346d973b6",
+      "matches": true
+    },
+    {
+      "path": "artifacts/vocab_order.json",
+      "recorded_sha256": "a229eb9ab23badc3513ecf090532fa5660aeab1ad8c0b426658f0b4684f53353",
+      "current_sha256": "a229eb9ab23badc3513ecf090532fa5660aeab1ad8c0b426658f0b4684f53353",
+      "matches": true
+    },
+    {
+      "path": "configs/v0.yaml",
+      "recorded_sha256": "f776b123153d5cb4de2cbe8ca523b027e0ff2534e1e39d041053cc4286afe145",
+      "current_sha256": "f776b123153d5cb4de2cbe8ca523b027e0ff2534e1e39d041053cc4286afe145",
+      "matches": true
+    },
+    {
+      "path": "data/packed.pt",
+      "recorded_sha256": "496d52385d308bbd0ce8012fd6a6d028d52c372d91aab22e3561dad63254e9ce",
+      "current_sha256": "496d52385d308bbd0ce8012fd6a6d028d52c372d91aab22e3561dad63254e9ce",
+      "matches": true
+    }
+  ],
+  "run_checkpoint_checks": [
+    {
+      "arm": "A",
+      "step_events": 100,
+      "step_valid_tokens_sum": 50800,
+      "resource_steps": 100,
+      "resource_train_valid_tokens": 50800,
+      "common_init_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "training_prefix_sha256": "b700f295b6edfb6ac6b1628ca99dde1ced2998332146f1dad6444587ea8232cb",
+      "checkpoint_path": "runs/v0_20261021/final_A.pt",
+      "checkpoint_current_sha256": "03e4362da38340aa3d6c5d33ec1ae185297d8f00cccf395c0db435a536617352",
+      "checkpoint_matches_resource": true,
+      "checkpoint_matches_event": true
+    },
+    {
+      "arm": "B",
+      "step_events": 100,
+      "step_valid_tokens_sum": 50800,
+      "resource_steps": 100,
+      "resource_train_valid_tokens": 50800,
+      "common_init_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "training_prefix_sha256": "b700f295b6edfb6ac6b1628ca99dde1ced2998332146f1dad6444587ea8232cb",
+      "checkpoint_path": "runs/v0_20261021/final_B.pt",
+      "checkpoint_current_sha256": "2f424145ca770ab6e6202bd0872a88efc7916dbee3882ecb225f9ecdfac45262",
+      "checkpoint_matches_resource": true,
+      "checkpoint_matches_event": true
+    },
+    {
+      "arm": "C",
+      "step_events": 100,
+      "step_valid_tokens_sum": 50800,
+      "resource_steps": 100,
+      "resource_train_valid_tokens": 50800,
+      "common_init_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "training_prefix_sha256": "b700f295b6edfb6ac6b1628ca99dde1ced2998332146f1dad6444587ea8232cb",
+      "checkpoint_path": "runs/v0_20261021/final_C.pt",
+      "checkpoint_current_sha256": "2c91b32decac5a60669cb6d998b1ccccc09c1eacf482ee25ddf649c06db59bf3",
+      "checkpoint_matches_resource": true,
+      "checkpoint_matches_event": true
+    }
+  ],
+  "historical_source_limitation": {
+    "old_changed_source_text_found": false,
+    "workspace_has_git_directory": false,
+    "changed_paths": [
+      "scripts/prepare.py",
+      "scripts/build_report.py",
+      "scripts/supervise_v0.py"
+    ],
+    "finding": "Current texts match delivery hashes only. Search of workspace source/log/report paths found no historical .py snapshots or source archives. Existing __pycache__ bytecode does not preserve an exact historical source text; a hash alone cannot recover source or justify a claimed diff."
+  },
+  "normalized_v0_timing": {
+    "runner_start_utc": "2026-10-21T12:15:17Z",
+    "runner_end_utc": "2026-10-21T12:15:28Z",
+    "runner_elapsed_seconds": 11.211335600004531,
+    "supervisor_start_utc": null,
+    "supervisor_end_utc": null,
+    "supervisor_elapsed_seconds": 19.406,
+    "supervisor_measurement_source": "Actual supervise_v0.py stdout captured in tool result: Runner exit=0; supervisor wall=19.406s",
+    "supervisor_display_precision_seconds": 0.001
+  }
+}

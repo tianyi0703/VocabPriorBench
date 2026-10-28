@@ -1,0 +1,302 @@
+[
+  {
+    "utc": "2026-10-22T02:26:00Z",
+    "rss_bytes": 1645486080,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4187",
+      "free_mib": "3770",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:01Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4379",
+      "free_mib": "3578",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:02Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4441",
+      "free_mib": "3516",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:03Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4435",
+      "free_mib": "3522",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:04Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4435",
+      "free_mib": "3522",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:05Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4436",
+      "free_mib": "3521",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:06Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4425",
+      "free_mib": "3532",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:07Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4425",
+      "free_mib": "3532",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:08Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4424",
+      "free_mib": "3533",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:09Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4424",
+      "free_mib": "3533",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:11Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4424",
+      "free_mib": "3533",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:12Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:13Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:14Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:15Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:16Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:17Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:18Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:19Z",
+    "rss_bytes": 1646211072,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:20Z",
+    "rss_bytes": 1644371968,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:21Z",
+    "rss_bytes": 1644371968,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:22Z",
+    "rss_bytes": 1644371968,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:23Z",
+    "rss_bytes": 1644371968,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:25Z",
+    "rss_bytes": 1644371968,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  },
+  {
+    "utc": "2026-10-22T02:26:26Z",
+    "rss_bytes": 1645285376,
+    "device_global": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4412",
+      "free_mib": "3545",
+      "driver": "616.92"
+    }
+  }
+]

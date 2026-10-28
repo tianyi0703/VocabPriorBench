@@ -1,0 +1,106 @@
+--- V01_sealed_run_gpu.py
++++ V02_run_gpu.py
+@@ -1,4 +1,4 @@
+-"""Twelve sealed paired one-pass trajectories; the external supervisor owns budget."""
++"""Eight frozen-output norm/direction trajectories; unchanged V0.1 numerical loop."""
+ import gc,json,math,os,platform,subprocess,sys,threading,time,traceback
+ os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8';os.environ['HF_HUB_OFFLINE']='1'
+ import psutil,torch
+@@ -41,14 +41,14 @@
+     start=time.perf_counter();log=open(RUN/'events.jsonl','x',encoding='utf-8',buffering=1)
+     def event(kind,**values):
+         row={'utc':utc(),'event':kind,**values};log.write(json.dumps(row,ensure_ascii=False,allow_nan=False)+'\n');print(json.dumps(row,ensure_ascii=False,allow_nan=False),flush=True)
+-    deadline=float(os.environ['V01_GPU_DEADLINE_EPOCH'])
++    deadline=float(os.environ['V02_GPU_DEADLINE_EPOCH'])
+     def guard():
+         if time.time()>deadline:raise TimeoutError('GPU cleanup reserve reached')
+     profiles=[];metrics=[];errors=[];active=None;monitor=None
+     result={'status':'RUNNING','runner_start_utc':utc(),'trajectories':profiles,'errors':errors,
+         'device_memory_scope':'nvidia-smi entire device includes desktop and other apps','cpu_memory_scope':'process RSS sampled about 1s plus nvidia-smi latency',
+         'trajectory_throughput_scope':'observed short-run synchronized step timings, no sustained thermal claim',
+-        'new_gpu_process_wall_seconds':None,'v0_gpu_process_wall_seconds':19.406}
++        'new_gpu_process_wall_seconds':None,'previous_project_gpu_process_wall_seconds':332.12303610004624}
+     try:
+         verify_snapshot();verify_inputs();torch.set_num_threads(4)
+         assert torch.cuda.is_available() and '4060' in torch.cuda.get_device_name(0) and torch.cuda.device_count()==1
+@@ -59,36 +59,41 @@
+         assert float(env['device_initial']['free_mib'])>=1500,'Insufficient headroom for safe small preflight'
+         codes=torch.load(ROOT/'artifacts/codes.pt',map_location='cpu',weights_only=True)
+         packed=torch.load(ROOT/'data/packed.pt',map_location='cpu',weights_only=True)
+-        prior=torch.load(PRIVATE/'prepared.pt',map_location='cpu',weights_only=True);logpi=prior['pi'].log().float()
++        prior=torch.load(ROOT/CFG['reuse']['prior'],map_location='cpu',weights_only=True);logpi=prior['pi'].log().float()
++        tables=torch.load(PRIVATE/'tables.pt',map_location='cpu',weights_only=True)
++        proof=read_json(RUN/'input_proof.json')
++        assert set(tables)=={'C','U','RS','S'}
+         dev_unigram_nll=float(-(prior['dev_counts'].double()*prior['pi'].log()).sum()/prior['dev_counts'].sum())
+-        selection=read_json(REPORT/'data_selection.json')
+-        event('job_start',config=CFG,config_sha256=sha(CODE_ROOT/'configs/v01.yaml'),snapshot=read_json(CODE_ROOT/'SNAPSHOT_MANIFEST.json')['tree_sha256'],dev_unigram_nll=dev_unigram_nll)
+-        # Small synthetic shape/memory check; no optimizer and no training-set replay.
+-        for kind in ['L','F','S']:
+-            guard();out=codes['output'] if kind!='S' else torch.where(codes['output']>=0,1.,-1.)/math.sqrt(128)
+-            probe=OutputStudent(codes['input'],out,kind=='L',logpi,**CFG['student']).cuda()
+-            ids=torch.arange(32,device='cuda').remainder(50304)[None];labels=next_token_labels(ids)
+-            with torch.autocast('cuda',dtype=torch.bfloat16):value=ce(probe(ids),labels)/31
+-            value.backward();torch.cuda.synchronize();assert torch.isfinite(value)
+-            event('gpu_preflight',output_type=kind,microbatch=1,sequence_length=32,optimizer_steps=0,synthetic_targets=31,allocated_bytes=torch.cuda.memory_allocated())
+-            del probe,out,ids,labels,value;gc.collect();torch.cuda.empty_cache()
++        selection=read_json(ROOT/CFG['reuse']['selection'])
++        event('job_start',config=CFG,config_sha256=sha(CODE_ROOT/'configs/v02.yaml'),snapshot=read_json(CODE_ROOT/'SNAPSHOT_MANIFEST.json')['tree_sha256'],dev_unigram_nll=dev_unigram_nll)
++        # Exactly one synthetic shape check, no optimizer and no corpus replay.
++        guard();probe=OutputStudent(codes['input'],tables['C'],False,logpi,**CFG['student']).cuda()
++        ids=torch.arange(32,device='cuda').remainder(50304)[None];labels=next_token_labels(ids)
++        with torch.autocast('cuda',dtype=torch.bfloat16):value=ce(probe(ids),labels)/31
++        value.backward();torch.cuda.synchronize();assert torch.isfinite(value)
++        event('gpu_preflight',output_type='C',microbatch=1,sequence_length=32,optimizer_steps=0,synthetic_targets=31,allocated_bytes=torch.cuda.memory_allocated())
++        del probe,ids,labels,value;gc.collect();torch.cuda.empty_cache()
+         for seed in CFG['seeds']:
+-            common=torch.load(PRIVATE/f'common_init_{seed}.pt',map_location='cpu',weights_only=True)
+-            order=read_json(RUN/f'block_order_{seed}.json');assert len(order)==len(set(order))==3068
++            common=torch.load(ROOT/CFG['reuse']['common_init_template'].format(seed=seed),map_location='cpu',weights_only=True)
++            order_path=ROOT/CFG['reuse']['block_order_template'].format(seed=seed)
++            order=read_json(order_path);assert len(order)==len(set(order))==3068
++            assert set(order)==set(selection['selected_block_indices'])
+             assert state_sha256(common)==selection['seeds'][str(seed)]['common_init_state_sha256']
+             for condition in CFG['run_order'][str(seed)]:
+-                guard();trajectory_start=time.perf_counter();monitor=Monitor();monitor.start()
++                guard();trajectory_start_utc=utc();trajectory_start=time.perf_counter()
++                monitor=Monitor();monitor.start()
+                 torch.manual_seed(seed);torch.cuda.manual_seed_all(seed)
+-                out=codes['output'] if condition[0]!='S' else torch.where(codes['output']>=0,1.,-1.)/math.sqrt(128)
+-                bias=logpi if condition.endswith('p') else torch.zeros_like(logpi)
+-                model=OutputStudent(codes['input'],out,condition[0]=='L',bias,**CFG['student']);load_common_state_dict(model,common)
++                out=tables[condition]
++                bias=logpi
++                model=OutputStudent(codes['input'],out,False,bias,**CFG['student']);load_common_state_dict(model,common)
+                 assert state_sha256(common_state_dict(model))==state_sha256(common)
+                 before={name:tensor_sha256(getattr(model,name)) for name in ['input_codes','output_codes','output_bias']}
++                assert before==proof['seeds'][str(seed)]['conditions'][condition]['initial_hashes']
+                 model.cuda();torch.cuda.reset_peak_memory_stats()
+                 parameters=[p for p in model.parameters() if p.requires_grad]
+-                optimizer=torch.optim.AdamW(parameters,lr=3e-4,weight_decay=.01,fused=True)
+-                active={'seed':seed,'condition':condition,'status':'RUNNING','start_utc':utc(),'steps':0,'train_valid_targets':0,
+-                    'common_initial_state_sha256':state_sha256(common),'block_order_sha256':sha(RUN/f'block_order_{seed}.json'),
++                optimizer=torch.optim.AdamW(parameters,lr=3e-4,weight_decay=.01,betas=(.9,.999),eps=1e-8,fused=True)
++                active={'seed':seed,'condition':condition,'status':'RUNNING','start_utc':trajectory_start_utc,'start_monotonic_seconds':trajectory_start,'steps':0,'train_valid_targets':0,
++                    'common_initial_state_sha256':state_sha256(common),'block_order_sha256':sha(order_path),
+                     'parameters_unique':unique_parameter_count(model),'parameters_trainable':unique_parameter_count(model,True),
+                     'before_hashes':before,'code_dtype':str(model.input_codes.dtype),'bit_packed':False,'code_bytes':2*model.input_codes.numel()*4,'bias_bytes':model.output_bias.numel()*4,
+                     'evaluations':[]}
+@@ -125,7 +130,7 @@
+                 assert pointer==3068 and total_tokens==389636
+                 after={name:tensor_sha256(getattr(model,name)) for name in before}
+                 assert before['input_codes']==after['input_codes'] and before['output_bias']==after['output_bias']
+-                assert (before['output_codes']!=after['output_codes'])==(condition[0]=='L')
++                assert before['output_codes']==after['output_codes']
+                 final_common=common_state_dict(model);updated={name:not torch.equal(common[name],value.cpu()) for name,value in final_common.items()}
+                 assert all(updated.values()) and all(x>0 for x in grad_seen.values())
+                 torch.cuda.synchronize();allocated=torch.cuda.max_memory_allocated();reserved=torch.cuda.max_memory_reserved()
+@@ -143,7 +148,7 @@
+         result['status']='COMPLETED'
+     except BaseException as exc:
+         errors.append({'type':type(exc).__name__,'message':str(exc),'traceback':traceback.format_exc()});event('error',**errors[-1])
+-        result['status']='BUDGET_INCOMPLETE' if isinstance(exc,TimeoutError) else 'FAILED'
++        result['status']='BUDGET_REACHED' if isinstance(exc,TimeoutError) else 'FAILED'
+         if active is not None:
+             active.update(status='FAILED',end_utc=utc(),wall_seconds=time.perf_counter()-trajectory_start,
+                 torch_peak_allocated_bytes=torch.cuda.max_memory_allocated() if torch.cuda.is_initialized() else None,

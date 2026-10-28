@@ -1,0 +1,22 @@
+{
+  "limit_seconds": 3600,
+  "v0_seconds": 19.406,
+  "new_cumulative_seconds": 312.71703610004624,
+  "jobs": [
+    {
+      "supervisor_start_utc": "2026-10-22T02:23:25Z",
+      "supervisor_end_utc": "2026-10-22T02:28:38Z",
+      "elapsed_seconds": 312.71703610004624,
+      "exit_code": 0,
+      "status": "COMPLETED",
+      "command": [
+        "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+        "-u",
+        "F:\\VocabPriorBench\\runs\\v01_20261022\\snapshot\\scripts\\v01\\run_gpu.py"
+      ],
+      "pid": 2028
+    }
+  ],
+  "project_cumulative_seconds": 332.12303610004625,
+  "status": "COMPLETED"
+}

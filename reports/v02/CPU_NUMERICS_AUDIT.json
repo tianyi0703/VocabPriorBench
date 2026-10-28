@@ -1,0 +1,178 @@
+{
+  "status": "PASS",
+  "audit_utc": "2026-10-22T11:50:42.296442+00:00",
+  "method": "Independent consistency audit of generated JSON/log evidence and prior JSON metadata only; no tensor loaded or recomputed, no PyTorch import, no GPU or corpus/holdout access.",
+  "checks": {
+    "four_explicit_table_names": true,
+    "all_shapes_dtypes_sizes_finite": true,
+    "fixed_tolerances": true,
+    "all_recorded_exact_and_rounding_checks_pass": true,
+    "C_norm_quantiles_equal_r": true,
+    "zero_and_tiny_rows_consistent": true,
+    "retained_EOS_and_unused_categories": true,
+    "bias_not_scaled_or_tables_recalibrated": true,
+    "source_codes_file_anchor": true,
+    "all_8_reused_input_specs_match_V01": true,
+    "proofs_identical_between_CPU_outputs": true,
+    "prepare_and_proof_pass": true,
+    "original_prior_reused": true,
+    "all_seeds_common_orders_and_output_mapping_match": true,
+    "all_8_conditions_share_identical_input_and_fixed_bias": true,
+    "selected_indices_digest_matches": true,
+    "JSON_SHA_matches_source_manifest_TABLE_CONSTRUCTION.json": true,
+    "JSON_SHA_matches_source_manifest_input_proof.json": true,
+    "four_toy_checks_pass": true,
+    "CPU_stages_pass_within_900s": true
+  },
+  "evidence_files": {
+    "reports/v02/TABLE_CONSTRUCTION.json": {
+      "bytes": 11923,
+      "sha256": "e0d0519c9f2abdb2c16f73330e62308166d165cc3e8047435c057c6549decfb1"
+    },
+    "runs/v02_20261022_193903/input_proof.json": {
+      "bytes": 5369,
+      "sha256": "839d934da6ad6d4ddfd93d8485dfbd1b1c3844dfbd9f848b5af5533a2d843325"
+    },
+    "runs/v02_20261022_193903/prepare_result.json": {
+      "bytes": 5094,
+      "sha256": "5b8f570a17db2231873501e57fc740aed7e802eb90fde067def9adac89f17f45"
+    },
+    "reports/v02/source_manifest.json": {
+      "bytes": 3173,
+      "sha256": "5402ae9cb4e883b3019121e72bda2d3caeb18a1ba6e3faadae93c3e45ff5cb5d"
+    },
+    "reports/v02/cpu_budget.json": {
+      "bytes": 1026,
+      "sha256": "f2489ce9ab75ad6ab02dcc4f33cb53f1a98d8b097a947b6962c8e426da4404bc"
+    },
+    "runs/v02_20261022_193903/numerics.log": {
+      "bytes": 741,
+      "sha256": "238e6b98331eab5f26f4ad4a20a7c84fc749db42e3663d9db787b078983043e2"
+    }
+  },
+  "C_S_anchor_proofs": [
+    {
+      "seed": 1729,
+      "V02_condition": "C",
+      "V01_condition": "Fp",
+      "input_output_bias_common_order_match": true
+    },
+    {
+      "seed": 1729,
+      "V02_condition": "S",
+      "V01_condition": "Sp",
+      "input_output_bias_common_order_match": true
+    },
+    {
+      "seed": 2718,
+      "V02_condition": "C",
+      "V01_condition": "Fp",
+      "input_output_bias_common_order_match": true
+    },
+    {
+      "seed": 2718,
+      "V02_condition": "S",
+      "V01_condition": "Sp",
+      "input_output_bias_common_order_match": true
+    }
+  ],
+  "unit_and_original_norm_evidence": {
+    "original_r_quantiles": {
+      "min": 0.39541953719570677,
+      "p1": 0.7106649894725572,
+      "p25": 0.894048550398532,
+      "median": 0.958165620040581,
+      "p75": 1.0208899713518957,
+      "p99": 1.2686694304562574,
+      "max": 3.650863266844493
+    },
+    "U_norm_quantiles": {
+      "min": 0.9999999708977746,
+      "p1": 0.9999999887846873,
+      "p25": 0.9999999967799416,
+      "median": 0.9999999999900866,
+      "p75": 1.0000000031539011,
+      "p99": 1.0000000110909084,
+      "max": 1.0000000300780805
+    },
+    "S_norm_quantiles": {
+      "min": 0.999999982885729,
+      "p1": 0.999999982885729,
+      "p25": 0.999999982885729,
+      "median": 0.999999982885729,
+      "p75": 0.999999982885729,
+      "p99": 0.999999982885729,
+      "max": 0.999999982885729
+    },
+    "actual_errors": {
+      "r_matches_original_C_norm": {
+        "passed": true,
+        "max_abs_error": 0.0,
+        "max_relative_error_on_nonzero_reference": 0.0,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "C_equals_r_times_U": {
+        "passed": true,
+        "max_abs_error": 1.0870763222925461e-07,
+        "max_relative_error_on_nonzero_reference": 5.958763704701555e-08,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "U_unit_row_norm": {
+        "passed": true,
+        "max_abs_error": 3.007808047073013e-08,
+        "max_relative_error_on_nonzero_reference": 3.007808047073013e-08,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "S_unit_row_norm": {
+        "passed": true,
+        "max_abs_error": 1.711427100037355e-08,
+        "max_relative_error_on_nonzero_reference": 1.711427100037355e-08,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "RS_row_norm_matches_r": {
+        "passed": true,
+        "max_abs_error": 2.2395224830162874e-07,
+        "max_relative_error_on_nonzero_reference": 7.617721222329612e-08,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "U_global_RMS_unit": {
+        "passed": true,
+        "max_abs_error": 2.482000716064192e-12,
+        "max_relative_error_on_nonzero_reference": 2.8080632595821715e-11,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "S_global_RMS_unit": {
+        "passed": true,
+        "max_abs_error": 1.5127021302241417e-09,
+        "max_relative_error_on_nonzero_reference": 1.7114270947149224e-08,
+        "nonzero_actual_at_zero_reference_count": 0
+      },
+      "RS_global_RMS_matches_C": {
+        "passed": true,
+        "max_abs_error": 1.5195822239411072e-09,
+        "max_relative_error_on_nonzero_reference": 1.719211032439645e-08,
+        "nonzero_actual_at_zero_reference_count": 0
+      }
+    }
+  },
+  "table_tensor_hashes": {
+    "C": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215",
+    "U": "248af99e95b47898a2ded80e2196e32159341c640ee886e74eae39723f3f9e35",
+    "RS": "49bd39b739b28a63bb044815e1a1e4c86b546e8037c326b4998642623e9a7c1d",
+    "S": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15"
+  },
+  "fixed_input_hash": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+  "fixed_output_bias_hash": "791f09a427c73c305df3fc2cd0522fe0d7153e067950c23d4711591041959603",
+  "CPU_process_budget_seconds": 23.772711600002367,
+  "limitations": [
+    "This is a cross-check of recorded CPU results, not a new independent tensor computation.",
+    "Actual source has no zero/tiny rows; those branches were exercised by the supervised toy checks.",
+    "Input/bias and output immutability during GPU training require the eventual per-trajectory final hash audit; this report verifies initial pairing and supervised CPU tests only.",
+    "Tokenizer-unused category uses the inherited contiguous tokenizer-ID range: 50277 through 50303 inclusive."
+  ],
+  "source_manifest_CPU_stage_archive": {
+    "sha256": "5402ae9cb4e883b3019121e72bda2d3caeb18a1ba6e3faadae93c3e45ff5cb5d",
+    "raw_utf8_text": "{\r\n  \"version\": \"V0.2\",\r\n  \"run_name\": \"v02_20261022_193903\",\r\n  \"created_utc\": \"2026-10-22T11:47:16Z\",\r\n  \"snapshot_tree_sha256\": \"ee3b1075a2e6fb0bc89f9e203307dea8784b673f6affc6c218e611eb8c90be00\",\r\n  \"instruction_sha256\": \"eeead3422aa1e7d27717952ef17f97a6e7a8bed41690abc5fc2b63ff3705ff8c\",\r\n  \"config_sha256\": \"9da93c253b2db79787af99f0df472083e0ac4351184bfdc470fa4c3d9f56d4ae\",\r\n  \"contract_sha256\": \"4ec2ced970221179e96d7f626ce58c737812774d588525fa29c88efb57c5aaf6\",\r\n  \"input_artifacts\": {\r\n    \"artifacts/codes.pt\": {\r\n      \"sha256\": \"0339478c73b8621207d11839c22febd10e73d87c4b7ed8e4ed5277c6fc1509c7\",\r\n      \"bytes\": 51512981\r\n    },\r\n    \"data/packed.pt\": {\r\n      \"sha256\": \"496d52385d308bbd0ce8012fd6a6d028d52c372d91aab22e3561dad63254e9ce\",\r\n      \"bytes\": 4107859\r\n    },\r\n    \"runs/v01_20261022/private/prepared.pt\": {\r\n      \"sha256\": \"a8a2e935c322771ae76926a8363d64d52a686e90d3c382062b8579c86610124a\",\r\n      \"bytes\": 1209450\r\n    },\r\n    \"reports/v01/data_selection.json\": {\r\n      \"sha256\": \"b13257210da96ed41fa5483fa8431442f5b94ed9ae59717ab11ce703083aa36d\",\r\n      \"bytes\": 34638\r\n    },\r\n    \"runs/v01_20261022/private/common_init_1729.pt\": {\r\n      \"sha256\": \"e9060877f8d438b8f8020167f550b3176c545190150f87cbaef8b7a8c9585266\",\r\n      \"bytes\": 1788143\r\n    },\r\n    \"runs/v01_20261022/block_order_1729.json\": {\r\n      \"sha256\": \"e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5\",\r\n      \"bytes\": 26505\r\n    },\r\n    \"runs/v01_20261022/private/common_init_2718.pt\": {\r\n      \"sha256\": \"94125e0d13e1e7190a1d39dd22882663af0dfb2727c92aed3c617ed8543690c4\",\r\n      \"bytes\": 1788143\r\n    },\r\n    \"runs/v01_20261022/block_order_2718.json\": {\r\n      \"sha256\": \"6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356\",\r\n      \"bytes\": 26505\r\n    }\r\n  },\r\n  \"derived_artifacts\": {\r\n    \"runs/v02_20261022_193903/private/tables.pt\": {\r\n      \"bytes\": 103024659,\r\n      \"sha256\": \"86332c44e76655883f249e3e161c5bf534c778c58add1f35b165ad4a9c604857\"\r\n    },\r\n    \"reports/v02/TABLE_CONSTRUCTION.json\": {\r\n      \"bytes\": 11923,\r\n      \"sha256\": \"e0d0519c9f2abdb2c16f73330e62308166d165cc3e8047435c057c6549decfb1\"\r\n    },\r\n    \"runs/v02_20261022_193903/input_proof.json\": {\r\n      \"bytes\": 5369,\r\n      \"sha256\": \"839d934da6ad6d4ddfd93d8485dfbd1b1c3844dfbd9f848b5af5533a2d843325\"\r\n    }\r\n  },\r\n  \"model_dependencies_copied_verbatim\": {\r\n    \"src/vocabpriorbench/model.py\": {\r\n      \"source\": \"runs/v01_20261022/snapshot/src/vocabpriorbench/model.py\",\r\n      \"sha256\": \"91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a\"\r\n    },\r\n    \"src/vocabpriorbench/v01_model.py\": {\r\n      \"source\": \"runs/v01_20261022/snapshot/src/vocabpriorbench/v01_model.py\",\r\n      \"sha256\": \"05232060d8944b2175a9456834c39e56ec21e1df57dc90a9448f6b433fb926a4\"\r\n    },\r\n    \"src/vocabpriorbench/__init__.py\": {\r\n      \"source\": \"runs/v01_20261022/snapshot/src/vocabpriorbench/__init__.py\",\r\n      \"sha256\": \"4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9\"\r\n    }\r\n  },\r\n  \"no_final_checkpoint_loaded\": true,\r\n  \"no_holdout_access_or_hash\": true,\r\n  \"no_download_or_environment_change\": true,\r\n  \"prepare_elapsed_seconds\": 2.1916458000196144\r\n}",
+    "note": "Exact CPU-stage bytes retained in UTF-8 text; finalization may append fields to the live source_manifest.json. Evidence-file hashes identify the versions observed at CPU audit time."
+  }
+}

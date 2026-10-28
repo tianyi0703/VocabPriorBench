@@ -1,0 +1,54 @@
+{
+  "limit_seconds": 1800,
+  "cumulative_seconds": 76.4967935999739,
+  "measured_stage_seconds": 16.4967935999739,
+  "preseal_check_reserve_seconds": 60,
+  "preseal_test_internal_seconds": 2.474,
+  "preseal_process_wall_seconds": null,
+  "note": "60s conservative reserve for preseal CPU checks; not an observed process duration",
+  "stages": [
+    {
+      "stage": "numerics",
+      "command": [
+        "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "F:\\VocabPriorBench\\runs\\v01_20261022\\snapshot\\tests",
+        "-v"
+      ],
+      "start_utc": "2026-10-22T02:22:16Z",
+      "end_utc": "2026-10-22T02:22:22Z",
+      "wall_seconds": 5.845665399974678,
+      "exit_code": 0,
+      "supervisor_error": null
+    },
+    {
+      "stage": "prepare",
+      "command": [
+        "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+        "-u",
+        "F:\\VocabPriorBench\\runs\\v01_20261022\\snapshot\\scripts\\v01\\prepare.py"
+      ],
+      "start_utc": "2026-10-22T02:22:22Z",
+      "end_utc": "2026-10-22T02:22:27Z",
+      "wall_seconds": 4.411041199986357,
+      "exit_code": 0,
+      "supervisor_error": null
+    },
+    {
+      "stage": "diagnose",
+      "command": [
+        "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+        "-u",
+        "F:\\VocabPriorBench\\runs\\v01_20261022\\snapshot\\scripts\\v01\\diagnose.py"
+      ],
+      "start_utc": "2026-10-22T02:22:56Z",
+      "end_utc": "2026-10-22T02:23:02Z",
+      "wall_seconds": 6.240087000012863,
+      "exit_code": 0,
+      "supervisor_error": null
+    }
+  ]
+}

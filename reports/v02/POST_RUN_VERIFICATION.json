@@ -1,0 +1,96 @@
+{
+  "utc": "2026-10-22T12:03:41+00:00",
+  "statuses": {
+    "EVIDENCE": "VALID",
+    "NUMERICS": "PASS",
+    "NORM_DIRECTION": "DIRECTION_RESIDUAL_AT_BOTH_NORMS",
+    "RESOURCE": "WITHIN_30MIN",
+    "PAPER_READINESS": "NOT_ESTABLISHED",
+    "NEXT": "PAUSE_CURRENT_CLAIM_FOR_RESEARCH_DECISION"
+  },
+  "checks": {
+    "training_snapshot_unchanged": true,
+    "all_eight_V01_input_files_still_match": true,
+    "derived_preparation_files_unchanged": true,
+    "actual_V01_model_dependency_bytes_identical": true,
+    "original_donor_tokenizer_data_metadata_unchanged": true,
+    "same_torch_and_cuda_build_as_V01": true,
+    "all_trajectories_complete": true,
+    "raw_steps_and_target_denominators_match": true,
+    "frozen_hashes_unchanged_and_common_parameters_updated": true,
+    "original_initial_states_and_block_orders_reused": true,
+    "metrics_raw_events_and_resources_agree": true,
+    "new_checkpoint_bytes_sha_verified_without_loading": true
+  },
+  "training_snapshot_tree_sha256": "ee3b1075a2e6fb0bc89f9e203307dea8784b673f6affc6c218e611eb8c90be00",
+  "input_files": {
+    "artifacts/codes.pt": {
+      "bytes": 51512981,
+      "sha256": "0339478c73b8621207d11839c22febd10e73d87c4b7ed8e4ed5277c6fc1509c7"
+    },
+    "data/packed.pt": {
+      "bytes": 4107859,
+      "sha256": "496d52385d308bbd0ce8012fd6a6d028d52c372d91aab22e3561dad63254e9ce"
+    },
+    "runs/v01_20261022/private/prepared.pt": {
+      "bytes": 1209450,
+      "sha256": "a8a2e935c322771ae76926a8363d64d52a686e90d3c382062b8579c86610124a"
+    },
+    "reports/v01/data_selection.json": {
+      "bytes": 34638,
+      "sha256": "b13257210da96ed41fa5483fa8431442f5b94ed9ae59717ab11ce703083aa36d"
+    },
+    "runs/v01_20261022/private/common_init_1729.pt": {
+      "bytes": 1788143,
+      "sha256": "e9060877f8d438b8f8020167f550b3176c545190150f87cbaef8b7a8c9585266"
+    },
+    "runs/v01_20261022/block_order_1729.json": {
+      "bytes": 26505,
+      "sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5"
+    },
+    "runs/v01_20261022/private/common_init_2718.pt": {
+      "bytes": 1788143,
+      "sha256": "94125e0d13e1e7190a1d39dd22882663af0dfb2727c92aed3c617ed8543690c4"
+    },
+    "runs/v01_20261022/block_order_2718.json": {
+      "bytes": 26505,
+      "sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356"
+    }
+  },
+  "raw_event_count": 6180,
+  "train_step_count": 6136,
+  "train_target_count": 3117088,
+  "evaluation_count": 24,
+  "bridge_count": 12,
+  "bridge_max_absolute_difference": 0.0,
+  "raw_evidence_files": {
+    "runs/v02_20261022_193903/metrics_raw.json": {
+      "bytes": 9869,
+      "sha256": "ebfc1a4c1693fac1903ebaf7645231c41d01c840f351592550942dfefc332cdb"
+    },
+    "runs/v02_20261022_193903/events.jsonl": {
+      "bytes": 1478171,
+      "sha256": "0adc9eaedfbd87db871f347218fd1efae51a07ce9c3a27893789bbc264946a9f"
+    },
+    "runs/v02_20261022_193903/gpu_console.log": {
+      "bytes": 1478625,
+      "sha256": "d0a8131b56726e39c2c165db98768ebd77574a75462c826cf6787a6e80024b34"
+    },
+    "reports/v02/source_manifest.json": {
+      "bytes": 3173,
+      "sha256": "5402ae9cb4e883b3019121e72bda2d3caeb18a1ba6e3faadae93c3e45ff5cb5d"
+    }
+  },
+  "report_code_files": {
+    "scripts/v02/analysis.py": {
+      "bytes": 6255,
+      "sha256": "f05fc532b2b90a9ae9739c82497cde1c49702f32881a9bd5a68c0e744ef31192"
+    },
+    "scripts/v02/finalize.py": {
+      "bytes": 31273,
+      "sha256": "3b6db12f2debfdfb14f94dbc07d3e03fdfb596c1d3a1300aaacf85ba77cdc204"
+    }
+  },
+  "postprocessing_elapsed_seconds": 0.5837943999795243,
+  "scope": "CPU stdlib arithmetic and file-byte hashing only, no tensor deserialization/CUDA/predictor/holdout"
+}

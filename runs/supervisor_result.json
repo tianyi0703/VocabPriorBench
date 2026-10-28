@@ -1,0 +1,9 @@
+{
+  "wall_seconds": 19.406,
+  "display_precision_seconds": 0.001,
+  "exit_code": 0,
+  "measurement_source": "Actual supervise_v0.py stdout captured in tool result: Runner exit=0; supervisor wall=19.406s",
+  "scope": "whole supervisor interval including child imports; monotonic measurement",
+  "external_start_utc": null,
+  "external_start_utc_note": "not recorded by initial supervisor; not fabricated"
+}

@@ -1,0 +1,204 @@
+{
+  "version": "V0.2",
+  "audit_client_date": "2026-10-22 Asia/Shanghai",
+  "generated_utc": "2026-10-22T11:41:37.620099+00:00",
+  "status": "VALID_FILE_EVIDENCE_PENDING_CPU_TENSOR_CHECKS",
+  "checks": {
+    "all_8_required_file_bytes_and_hashes_match": true,
+    "all_order_metadata_checks_pass": true,
+    "all_anchor_checks_pass": true,
+    "same_input_anchor_all_seeds_conditions": true,
+    "same_prior_bias_anchor_all_seeds_conditions": true,
+    "same_C_output_anchor_both_seeds": true,
+    "same_S_output_anchor_both_seeds": true,
+    "different_seed_saved_state_hashes": true,
+    "data_selection_counts": true,
+    "candidate_not_in_original_snapshot": true,
+    "allowed_inputs_unchanged_during_audit": true
+  },
+  "failures": [],
+  "verified_input_files": [
+    {
+      "path": "artifacts/codes.pt",
+      "exists": true,
+      "expected": {
+        "sha256": "0339478c73b8621207d11839c22febd10e73d87c4b7ed8e4ed5277c6fc1509c7",
+        "bytes": 51512981
+      },
+      "actual_bytes": 51512981,
+      "actual_sha256": "0339478c73b8621207d11839c22febd10e73d87c4b7ed8e4ed5277c6fc1509c7",
+      "pass": true
+    },
+    {
+      "path": "data/packed.pt",
+      "exists": true,
+      "expected": {
+        "sha256": "496d52385d308bbd0ce8012fd6a6d028d52c372d91aab22e3561dad63254e9ce",
+        "bytes": 4107859
+      },
+      "actual_bytes": 4107859,
+      "actual_sha256": "496d52385d308bbd0ce8012fd6a6d028d52c372d91aab22e3561dad63254e9ce",
+      "pass": true
+    },
+    {
+      "path": "runs/v01_20261022/private/prepared.pt",
+      "exists": true,
+      "expected": {
+        "sha256": "a8a2e935c322771ae76926a8363d64d52a686e90d3c382062b8579c86610124a",
+        "bytes": 1209450
+      },
+      "actual_bytes": 1209450,
+      "actual_sha256": "a8a2e935c322771ae76926a8363d64d52a686e90d3c382062b8579c86610124a",
+      "pass": true
+    },
+    {
+      "path": "runs/v01_20261022/private/common_init_1729.pt",
+      "exists": true,
+      "expected": {
+        "sha256": "e9060877f8d438b8f8020167f550b3176c545190150f87cbaef8b7a8c9585266",
+        "bytes": 1788143
+      },
+      "actual_bytes": 1788143,
+      "actual_sha256": "e9060877f8d438b8f8020167f550b3176c545190150f87cbaef8b7a8c9585266",
+      "pass": true
+    },
+    {
+      "path": "runs/v01_20261022/private/common_init_2718.pt",
+      "exists": true,
+      "expected": {
+        "sha256": "94125e0d13e1e7190a1d39dd22882663af0dfb2727c92aed3c617ed8543690c4",
+        "bytes": 1788143
+      },
+      "actual_bytes": 1788143,
+      "actual_sha256": "94125e0d13e1e7190a1d39dd22882663af0dfb2727c92aed3c617ed8543690c4",
+      "pass": true
+    },
+    {
+      "path": "runs/v01_20261022/block_order_1729.json",
+      "exists": true,
+      "expected": {
+        "sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5",
+        "bytes": 26505
+      },
+      "actual_bytes": 26505,
+      "actual_sha256": "e07066503be4a5d3b23c7c860d831e28c1ab314edb4bc99aca940b5d9bc84cb5",
+      "pass": true
+    },
+    {
+      "path": "runs/v01_20261022/block_order_2718.json",
+      "exists": true,
+      "expected": {
+        "sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356",
+        "bytes": 26505
+      },
+      "actual_bytes": 26505,
+      "actual_sha256": "6da3141c7d25140eb1db2d6b5a9dc546cd52b150649efe84342db38585c93356",
+      "pass": true
+    },
+    {
+      "path": "reports/v01/data_selection.json",
+      "exists": true,
+      "expected": {
+        "sha256": "b13257210da96ed41fa5483fa8431442f5b94ed9ae59717ab11ce703083aa36d",
+        "bytes": 34638
+      },
+      "actual_bytes": 34638,
+      "actual_sha256": "b13257210da96ed41fa5483fa8431442f5b94ed9ae59717ab11ce703083aa36d",
+      "pass": true
+    }
+  ],
+  "order_metadata_checks": {
+    "1729": {
+      "checks": {
+        "selected_count_3068": true,
+        "selected_unique": true,
+        "order_length_3068": true,
+        "same_selected_set_once": true,
+        "order_file_hash_matches_selection": true,
+        "common_file_hash_matches_selection": true
+      },
+      "expected_common_state_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "common_state_recomputed": false,
+      "order_file": "runs/v01_20261022/block_order_1729.json",
+      "common_file": "runs/v01_20261022/private/common_init_1729.pt"
+    },
+    "2718": {
+      "checks": {
+        "selected_count_3068": true,
+        "selected_unique": true,
+        "order_length_3068": true,
+        "same_selected_set_once": true,
+        "order_file_hash_matches_selection": true,
+        "common_file_hash_matches_selection": true
+      },
+      "expected_common_state_sha256": "fb70662d63bb1cac80e33f001a635222b0c74cdbb6ed821181de878a6565b7b5",
+      "common_state_recomputed": false,
+      "order_file": "runs/v01_20261022/block_order_2718.json",
+      "common_file": "runs/v01_20261022/private/common_init_2718.pt"
+    }
+  },
+  "anchors_file": "reports/v02/anchor_hashes.json",
+  "expected_V01_environment": {
+    "utc": "2026-10-22T02:23:28Z",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.15 (main, Oct  9 2026, 15:21:55) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+    "torch": "2.10.0+cu128",
+    "cuda_build": "12.8",
+    "cudnn": 91002,
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "device_initial": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "uuid": "GPU-REDACTED",
+      "total_mib": "8188",
+      "used_mib": "4028",
+      "free_mib": "3929",
+      "driver": "616.92"
+    },
+    "memory": {
+      "total": 34038341632,
+      "available": 7212437504,
+      "percent": 78.8,
+      "used": 26825904128,
+      "free": 7212437504
+    }
+  },
+  "snapshot_reference": {
+    "root": "runs/v01_20261022/snapshot",
+    "recorded_tree_sha256": "35d17fbdd376690a8b49458581f1ac14c0219ce8a322a2cc9cfbf137814757c9",
+    "candidate_in_snapshot": false
+  },
+  "source_read_scope": [
+    "reports/v01/V01_REPORT.md",
+    "reports/v01/EXPERIMENT_CONTRACT.md",
+    "reports/v01/source_manifest.json",
+    "reports/v01/data_selection.json",
+    "configs/v01.yaml",
+    "runs/v01_20261022/snapshot/src/vocabpriorbench/model.py",
+    "runs/v01_20261022/snapshot/src/vocabpriorbench/v01_model.py",
+    "runs/v01_20261022/snapshot/scripts/v01/prepare.py",
+    "runs/v01_20261022/snapshot/scripts/v01/run_gpu.py",
+    "runs/v01_20261022/snapshot/scripts/v01/common.py",
+    "runs/v01_20261022/snapshot/scripts/v01/supervise_gpu.py",
+    "runs/v01_20261022/environment.json",
+    "reports/v01/RESIDUAL_HYPOTHESIS_CANDIDATE.md",
+    "runs/v01_20261022/resources_{1729,2718}_{Fp,Sp}.json",
+    "runs/v01_20261022/events.jsonl",
+    "runs/v01_20261022/metrics_raw.json"
+  ],
+  "not_performed": [
+    "No torch imports or tensor deserialization; state_sha256 and actual C/S tensor hashes must be recomputed by budgeted root CPU prepare",
+    "No V0/V01 prepare invocation or old common import",
+    "No final checkpoint opened or hashed; before_hashes only used as initial anchors",
+    "No holdout open, read, or rehash; no raw corpus access",
+    "No PCA/refitting/repacking/random sampling/new frequencies"
+  ],
+  "source_findings": [
+    "V01 OutputStudent clones/fixes input and fixed output_bias buffer; prior is added after base logits are promoted to FP32",
+    "Old run_gpu.py condition[0]/endswith(p) is unsafe for C/U/RS/S and must not be reused as dispatch",
+    "Actual V01 monotonic trajectory_start occurs before model creation, whereas start_utc is set later; external child budget remains a separate valid measurement",
+    "V01 report pi-weighted projected margin differs from candidate unweighted maximum cosine-neighbor margin; neither implemented in V02",
+    "Candidate is absent from original snapshot; its asserted blindness cannot be verified from sealed execution sources"
+  ],
+  "continuation": "File/metadata/log audit finds no blocker; complete required CPU tensor/state/construction checks before CUDA"
+}

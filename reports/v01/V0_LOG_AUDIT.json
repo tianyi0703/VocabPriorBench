@@ -1,0 +1,286 @@
+{
+  "audit_date_client": "2026-10-22 Asia/Shanghai",
+  "generated_utc": "2026-10-22T02:11:40.157470+00:00",
+  "status": "PASS_WITH_LIMITED_V0_HISTORY",
+  "scope": "CPU-only log/file consistency; no CUDA execution, no corpus or holdout access, no V0 audit_artifacts rerun",
+  "checks": {
+    "events_console_byte_identical": true,
+    "environment_event_file_equal": true,
+    "resource_budget_equal_ledger": true,
+    "one_completed_job": true,
+    "zero_recorded_errors_and_oom": true,
+    "same_common_and_prefix_hashes": true,
+    "a_b_code_initial_hash_equal": true,
+    "all_arm_checks_pass": true,
+    "source_evidence_unchanged_during_audit": true
+  },
+  "event_counts": {
+    "environment": 1,
+    "actual_a_b_cpu_forward_check": 1,
+    "preflight": 3,
+    "arm_start": 3,
+    "step": 300,
+    "arm_end": 3,
+    "job_end": 1
+  },
+  "normalized_v0_timing": {
+    "runner_start_utc": "2026-10-21T12:15:17Z",
+    "runner_end_utc": "2026-10-21T12:15:28Z",
+    "runner_elapsed_seconds": 11.211335600004531,
+    "runner_utc_precision_seconds": 1,
+    "supervisor_start_utc": null,
+    "supervisor_end_utc": null,
+    "supervisor_elapsed_seconds": 19.406,
+    "supervisor_display_precision_seconds": 0.001,
+    "supervisor_measurement_provenance": "POSTHOC_ARCHIVED_TOOL_STDOUT; exact original tool output is not separately stored in workspace",
+    "supervisor_source_file": "runs/supervisor_result.json",
+    "budget_seconds_v0": 19.406,
+    "interval_difference_seconds": 8.194664399995467,
+    "interval_difference_interpretation": "Different measurement scopes; cannot allocate difference exclusively to import time"
+  },
+  "arms": [
+    {
+      "arm": "A",
+      "checks": {
+        "steps_contiguous_1_to_100": true,
+        "every_step_508_targets": true,
+        "cumulative_tokens_correct": true,
+        "step_nll_sum_over_denominator": true,
+        "online_nll_matches": true,
+        "step_times_match": true,
+        "short_window_times_match": true,
+        "resource_equals_aggregate": true,
+        "resource_equals_event_except_extra_gradient_details": true,
+        "eval_nll_count_matches": true,
+        "checkpoint_file_hash_matches": true,
+        "checkpoint_file_size_matches": true,
+        "monitor_peak_matches": true,
+        "code_hash_update_rule": true
+      },
+      "steps": 100,
+      "valid_targets": 50800,
+      "online_nll_sum": 398443.4296875,
+      "online_nll": 7.843374600147638,
+      "initial_train_nll": 10.992218257874017,
+      "final_train_nll": 7.133073941929134,
+      "initial_dev_nll": 11.01156496062992,
+      "final_dev_nll": 7.559660663754921,
+      "short_window_steps": [
+        11,
+        100
+      ],
+      "short_window_targets": 45720,
+      "short_window_seconds": 2.5876004997990094,
+      "short_window_targets_per_second": 17668.878949262562,
+      "monitor_sample_count": 8,
+      "code_table_changed": {
+        "input": true,
+        "output": true
+      },
+      "code_hashes_before": {
+        "input": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215"
+      },
+      "code_hashes_after": {
+        "input": "bd3624c0feed6fcdaa58443d541795c71f8f8ff86bef00ce4cae9e5f95179665",
+        "output": "7bb46a6ef662f56d0250fc05c027a08fa4cc531ec7dca317e5d6bdb2777d11a7"
+      },
+      "common_initial_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "training_prefix_sha256": "b700f295b6edfb6ac6b1628ca99dde1ced2998332146f1dad6444587ea8232cb"
+    },
+    {
+      "arm": "B",
+      "checks": {
+        "steps_contiguous_1_to_100": true,
+        "every_step_508_targets": true,
+        "cumulative_tokens_correct": true,
+        "step_nll_sum_over_denominator": true,
+        "online_nll_matches": true,
+        "step_times_match": true,
+        "short_window_times_match": true,
+        "resource_equals_aggregate": true,
+        "resource_equals_event_except_extra_gradient_details": true,
+        "eval_nll_count_matches": true,
+        "checkpoint_file_hash_matches": true,
+        "checkpoint_file_size_matches": true,
+        "monitor_peak_matches": true,
+        "code_hash_update_rule": true
+      },
+      "steps": 100,
+      "valid_targets": 50800,
+      "online_nll_sum": 427704.609375,
+      "online_nll": 8.419382074311024,
+      "initial_train_nll": 10.992218257874017,
+      "final_train_nll": 8.232264240895669,
+      "initial_dev_nll": 11.01156496062992,
+      "final_dev_nll": 8.190425842765748,
+      "short_window_steps": [
+        11,
+        100
+      ],
+      "short_window_targets": 45720,
+      "short_window_seconds": 1.9409432997344993,
+      "short_window_targets_per_second": 23555.556726594754,
+      "monitor_sample_count": 6,
+      "code_table_changed": {
+        "input": false,
+        "output": false
+      },
+      "code_hashes_before": {
+        "input": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215"
+      },
+      "code_hashes_after": {
+        "input": "7ce64466e57135d8f8ccc0583f97ba23b827c7cb18f06d7ff40892056bbaae27",
+        "output": "dee18b2b89acdd06de3c5fb3df2f50db6ea55d6b6866aff0cbb9487d1ec53215"
+      },
+      "common_initial_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "training_prefix_sha256": "b700f295b6edfb6ac6b1628ca99dde1ced2998332146f1dad6444587ea8232cb"
+    },
+    {
+      "arm": "C",
+      "checks": {
+        "steps_contiguous_1_to_100": true,
+        "every_step_508_targets": true,
+        "cumulative_tokens_correct": true,
+        "step_nll_sum_over_denominator": true,
+        "online_nll_matches": true,
+        "step_times_match": true,
+        "short_window_times_match": true,
+        "resource_equals_aggregate": true,
+        "resource_equals_event_except_extra_gradient_details": true,
+        "eval_nll_count_matches": true,
+        "checkpoint_file_hash_matches": true,
+        "checkpoint_file_size_matches": true,
+        "monitor_peak_matches": true,
+        "code_hash_update_rule": true
+      },
+      "steps": 100,
+      "valid_targets": 50800,
+      "online_nll_sum": 448919.8203125,
+      "online_nll": 8.837004336860236,
+      "initial_train_nll": 10.923166830708661,
+      "final_train_nll": 8.582948219119094,
+      "initial_dev_nll": 10.921705831692913,
+      "final_dev_nll": 8.514642670398622,
+      "short_window_steps": [
+        11,
+        100
+      ],
+      "short_window_targets": 45720,
+      "short_window_seconds": 2.0470650001079775,
+      "short_window_targets_per_second": 22334.41536912037,
+      "monitor_sample_count": 7,
+      "code_table_changed": {
+        "input": false,
+        "output": false
+      },
+      "code_hashes_before": {
+        "input": "1f96160a3c1a4c61fe37a5272d57a29804774de86b011be2ccfeb2c2c570f8aa",
+        "output": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15"
+      },
+      "code_hashes_after": {
+        "input": "1f96160a3c1a4c61fe37a5272d57a29804774de86b011be2ccfeb2c2c570f8aa",
+        "output": "e9a4e872117f71b450aeb399e1c82926a730a17987c6004d9bbee7a79fea8f15"
+      },
+      "common_initial_sha256": "8748fdb3c713890d3fd7816a8ff9f30cd459f9e1aba05b31801388d5a7f38794",
+      "training_prefix_sha256": "b700f295b6edfb6ac6b1628ca99dde1ced2998332146f1dad6444587ea8232cb"
+    }
+  ],
+  "source_history": [
+    {
+      "path": "scripts/prepare.py",
+      "before_gpu_sha256": "1ac476fd5f19b5d5f38bca2211eb7305a923d38b6884ec34eaa887c5cd47aba3",
+      "v0_delivery_sha256": "e3a802d2fbe13d33545a999d86935dab1ea49a107b67da1b3fbf3babe9b95af8",
+      "current_sha256": "e3a802d2fbe13d33545a999d86935dab1ea49a107b67da1b3fbf3babe9b95af8",
+      "current_matches_execution": false,
+      "historical_source_available": false,
+      "diff_available": false,
+      "history_note": "No archived historical source text found under scripts/src/runs/reports; hash cannot recover old text; changes not independently classified"
+    },
+    {
+      "path": "scripts/build_report.py",
+      "before_gpu_sha256": "8360ae24da43caadadece05166cbc3dfca7ee87335fa91294983ea3b98aae1b4",
+      "v0_delivery_sha256": "bd958ba397f90c909f4f37ea3cebb40a7330e89bf3089f9ada57b8c2ebdb4ce3",
+      "current_sha256": "bd958ba397f90c909f4f37ea3cebb40a7330e89bf3089f9ada57b8c2ebdb4ce3",
+      "current_matches_execution": false,
+      "historical_source_available": false,
+      "diff_available": false,
+      "history_note": "No archived historical source text found under scripts/src/runs/reports; hash cannot recover old text; changes not independently classified"
+    },
+    {
+      "path": "scripts/supervise_v0.py",
+      "before_gpu_sha256": "69b90891ab3905add1eea696a89ef2f392c9cfa177ebdc2c43192c51996a24e2",
+      "v0_delivery_sha256": "b739afeae8fb4df07647967a11255345d337b081625b5e59731875b3befc46a2",
+      "current_sha256": "b739afeae8fb4df07647967a11255345d337b081625b5e59731875b3befc46a2",
+      "current_matches_execution": false,
+      "historical_source_available": false,
+      "diff_available": false,
+      "history_note": "No archived historical source text found under scripts/src/runs/reports; hash cannot recover old text; changes not independently classified"
+    },
+    {
+      "path": "scripts/run_v0.py",
+      "before_gpu_sha256": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+      "v0_delivery_sha256": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+      "current_sha256": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+      "current_matches_execution": true,
+      "historical_source_available": true,
+      "diff_available": true,
+      "history_note": "Current bytes match recorded execution hash"
+    },
+    {
+      "path": "src/vocabpriorbench/model.py",
+      "before_gpu_sha256": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+      "v0_delivery_sha256": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+      "current_sha256": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+      "current_matches_execution": true,
+      "historical_source_available": true,
+      "diff_available": true,
+      "history_note": "Current bytes match recorded execution hash"
+    },
+    {
+      "path": "scripts/check_numerics.py",
+      "before_gpu_sha256": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+      "v0_delivery_sha256": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+      "current_sha256": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+      "current_matches_execution": true,
+      "historical_source_available": true,
+      "diff_available": true,
+      "history_note": "Current bytes match recorded execution hash"
+    }
+  ],
+  "source_evidence_sha256": {
+    "runs/v0_20261021/events.jsonl": "6c64814f7aacecd24ab6e5eb7bf7139824e143463ea44e7f959ab8ad31e860a8",
+    "runs/gpu_console.log": "6c64814f7aacecd24ab6e5eb7bf7139824e143463ea44e7f959ab8ad31e860a8",
+    "runs/v0_20261021/environment.json": "f130510f7fab98a8cc439a3a700caf99cae5be7533a8fd5383c89c4d3655997e",
+    "reports/resource_profile.json": "390c756aa1492cb6b6e6f9ed0c4ad9afc60c202bfe742d871ee567d7fba17d90",
+    "reports/gpu_budget.json": "157fb7ccbc30260ee4b9c76d0174718b29a69d9a6fdfdefe7566e97d3db245f7",
+    "runs/supervisor_result.json": "c11a5665c4c029eefa5bd1acc8fa93e5b494e0bb3fdf0b3ca9e47771b2930c61",
+    "runs/COMMANDS.md": "89102f395b0660065e0ff34df61a94e0729c420b7d2958e4190b004fa4789c71",
+    "runs/numerical_checks.log": "2665c7b14a0d433e5428ce9699e6a1a9c5636d7d61c0ea0eb4e66835dc6af61a",
+    "runs/artifact_audit.json": "0cfa5ab2caa0133b31ed67e1fa8e1afcfb413c54ffa94d8cc852f2d95d810f4b",
+    "reports/source_manifest.json": "1cfe2ef82ff3118cfd5a898bc4984b62ea47197acd8c5df207b1098ad2af8784",
+    "reports/V0_REPORT.md": "e06d3b40561a2d5d757d5e135c7b71a3a0bd4d78cc9812faa89652747fbe27ac",
+    "scripts/run_v0.py": "2733fc5189341b8ff9b3e71c7bec7ec3a7118e34ef8664b20b07b82415693187",
+    "src/vocabpriorbench/model.py": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+    "scripts/check_numerics.py": "42511f9d32833749093f83df5f617803e1a92a47d75becd86704b068d3a78548",
+    "scripts/prepare.py": "e3a802d2fbe13d33545a999d86935dab1ea49a107b67da1b3fbf3babe9b95af8",
+    "scripts/build_report.py": "bd958ba397f90c909f4f37ea3cebb40a7330e89bf3089f9ada57b8c2ebdb4ce3",
+    "scripts/supervise_v0.py": "b739afeae8fb4df07647967a11255345d337b081625b5e59731875b3befc46a2",
+    "runs/v0_20261021/resources_A.json": "8aee284cd0fe3ffca9b5a6bab7ee6ae27e7614f5b4b2cf3a2b77f733a725066c",
+    "runs/v0_20261021/monitor_A.json": "28c49864f468323dda737ff28937d0fc7259e0a17e79792298524833128f33a0",
+    "runs/v0_20261021/final_A.pt": "03e4362da38340aa3d6c5d33ec1ae185297d8f00cccf395c0db435a536617352",
+    "runs/v0_20261021/resources_B.json": "0581d69c30e95e6182b599d9812d452cd69d37104cf63bfac440dbe8c2322382",
+    "runs/v0_20261021/monitor_B.json": "80fe8747482ccb2007d32de711fdea03e04763c4e0050ba53f0c69d6e41e2e23",
+    "runs/v0_20261021/final_B.pt": "2f424145ca770ab6e6202bd0872a88efc7916dbee3882ecb225f9ecdfac45262",
+    "runs/v0_20261021/resources_C.json": "15182cf49c790ddce2ea53381e8c33cea6d3f1c31432fb8cc5bee5ccaa88ac78",
+    "runs/v0_20261021/monitor_C.json": "e5b31f1e2bf3fa709f4a27551595f1a701cf1ffd19fee6fdf8fae47510b1094e",
+    "runs/v0_20261021/final_C.pt": "2c91b32decac5a60669cb6d998b1ccccc09c1eacf482ee25ddf649c06db59bf3"
+  },
+  "historical_limits": [
+    "Old prepare.py/build_report.py/supervise_v0.py source text unavailable; no actual diff recoverable from hashes alone",
+    "Supervisor elapsed was archived after observed tool stdout; supervisor start/end UTC remain unknown",
+    "Table tensor hashes checked for mutual log consistency; actual final checkpoint file bytes hashed, tensor tables were not reloaded or recomputed in this audit"
+  ],
+  "v01_continuation": "NO_BLOCKER_FROM_THIS_LOG_AUDIT; root must separately verify current prepared train/dev and code artifacts without holdout access"
+}

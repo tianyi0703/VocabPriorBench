@@ -1,0 +1,83 @@
+{
+  "files": {
+    "CODEX_V02_VocabPriorBench.txt": {
+      "sha256": "eeead3422aa1e7d27717952ef17f97a6e7a8bed41690abc5fc2b63ff3705ff8c",
+      "bytes": 21672
+    },
+    "configs/v02.yaml": {
+      "sha256": "9da93c253b2db79787af99f0df472083e0ac4351184bfdc470fa4c3d9f56d4ae",
+      "bytes": 1959
+    },
+    "reports/v02/EXPERIMENT_CONTRACT.md": {
+      "sha256": "4ec2ced970221179e96d7f626ce58c737812774d588525fa29c88efb57c5aaf6",
+      "bytes": 8321
+    },
+    "requirements.txt": {
+      "sha256": "a1e190bc4a08484f2d1393b9707a6dac4cdd52bcf4a0e8839598600b9c505133",
+      "bytes": 177
+    },
+    "scripts/v02/common.py": {
+      "sha256": "bf738824691e53f2a3bbf14b66c76c6d8175fa865c2fade9bbc1552071eebbcd",
+      "bytes": 2516
+    },
+    "scripts/v02/cpu_supervise.py": {
+      "sha256": "2f9b3adf66d945627a626e105db438cc9a0cb2587bc7fd99871ae778d31a3532",
+      "bytes": 2085
+    },
+    "scripts/v02/create_runner.py": {
+      "sha256": "69f94537b95c054869a76cf26dc9f316f1d6438c233607462e4530919cf02ec4",
+      "bytes": 5211
+    },
+    "scripts/v02/prepare.py": {
+      "sha256": "fe999bbdbee1b4d99cf2adb22efba854b47e6b3418917504c25491dc89cae656",
+      "bytes": 7511
+    },
+    "scripts/v02/run_gpu.py": {
+      "sha256": "2b5ace731326d73ae44e542e07adb8fd1291bf928941e2e35b6c39e974163938",
+      "bytes": 14571
+    },
+    "scripts/v02/seal.py": {
+      "sha256": "3145a39d225e622609f3702db3cd99ccc2d0aee1b563f9aee923548cad65306c",
+      "bytes": 1829
+    },
+    "scripts/v02/supervise_gpu.py": {
+      "sha256": "a303f70b3eb8b426e2216c7e719afea1cb308f1d800452594dbcffe557d2bcd3",
+      "bytes": 4717
+    },
+    "scripts/v02/tables.py": {
+      "sha256": "01ff8403323984aa7903d61a11242b63cc1126fe1378c93d63f65e7c7101d857",
+      "bytes": 11096
+    },
+    "src/vocabpriorbench/__init__.py": {
+      "sha256": "4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9",
+      "bytes": 433
+    },
+    "src/vocabpriorbench/model.py": {
+      "sha256": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a",
+      "bytes": 9602
+    },
+    "src/vocabpriorbench/v01_model.py": {
+      "sha256": "05232060d8944b2175a9456834c39e56ec21e1df57dc90a9448f6b433fb926a4",
+      "bytes": 3036
+    },
+    "tests/test_v02_tables.py": {
+      "sha256": "29bc581ca9bfed3a4315eacce9b247a9b2cd7e5f05578fdcd223edb07d036bfb",
+      "bytes": 8613
+    }
+  },
+  "tree_sha256": "ee3b1075a2e6fb0bc89f9e203307dea8784b673f6affc6c218e611eb8c90be00",
+  "model_dependency_sources": {
+    "src/vocabpriorbench/model.py": {
+      "source": "runs/v01_20261022/snapshot/src/vocabpriorbench/model.py",
+      "sha256": "91d4b2edae61ea3d387d0c54d8c4145537a8337b3fa9c19e47d19aeb6f12831a"
+    },
+    "src/vocabpriorbench/v01_model.py": {
+      "source": "runs/v01_20261022/snapshot/src/vocabpriorbench/v01_model.py",
+      "sha256": "05232060d8944b2175a9456834c39e56ec21e1df57dc90a9448f6b433fb926a4"
+    },
+    "src/vocabpriorbench/__init__.py": {
+      "source": "runs/v01_20261022/snapshot/src/vocabpriorbench/__init__.py",
+      "sha256": "4013668ebf3fccbefa0d6b3a056bf50ad3501d1a0df71e29bf1c5547b17ca8d9"
+    }
+  }
+}

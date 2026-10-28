@@ -1,0 +1,223 @@
+{
+  "statuses": {
+    "EVIDENCE": "VALID",
+    "NUMERICS": "PASS",
+    "NORM_DIRECTION": "DIRECTION_RESIDUAL_AT_BOTH_NORMS",
+    "RESOURCE": "WITHIN_30MIN",
+    "PAPER_READINESS": "NOT_ESTABLISHED",
+    "NEXT": "PAUSE_CURRENT_CLAIM_FOR_RESEARCH_DECISION"
+  },
+  "primary_endpoint": 767,
+  "exploratory_after_V01_dev": true,
+  "gates": {
+    "training_snapshot_unchanged": true,
+    "all_eight_V01_input_files_still_match": true,
+    "derived_preparation_files_unchanged": true,
+    "actual_V01_model_dependency_bytes_identical": true,
+    "original_donor_tokenizer_data_metadata_unchanged": true,
+    "same_torch_and_cuda_build_as_V01": true,
+    "all_trajectories_complete": true,
+    "raw_steps_and_target_denominators_match": true,
+    "frozen_hashes_unchanged_and_common_parameters_updated": true,
+    "original_initial_states_and_block_orders_reused": true,
+    "metrics_raw_events_and_resources_agree": true,
+    "new_checkpoint_bytes_sha_verified_without_loading": true
+  },
+  "bridge_max_absolute_difference": 0.0,
+  "bridge_tolerance_nats_per_token": 0.001,
+  "rules_source": "runs/v02_20261022_193903/snapshot/reports/v02/EXPERIMENT_CONTRACT.md",
+  "rules": {
+    "A": "both seeds: G>.05, abs(D_r)<=.05, abs(D_1)<=.05, N_cont>.05, N_sign>.05",
+    "B": "both seeds: D_r>.05 and D_1>.05",
+    "C": "both seeds: abs(D_r)<=.05 and D_1>.05; A not satisfied",
+    "D": "all other complete valid patterns"
+  },
+  "primary_input": [
+    {
+      "seed": 1729,
+      "step": 767,
+      "C_nll": 6.274890513258699,
+      "U_nll": 6.273991691340855,
+      "RS_nll": 6.454264401890607,
+      "S_nll": 6.443508820995271,
+      "G": 0.1686183077365726,
+      "D_r": 0.1793738886319085,
+      "D_1": 0.169517129654416,
+      "N_cont": -0.0008988219178434065,
+      "N_sign": -0.010755580895335903,
+      "I": -0.009856758977492497,
+      "G_minus_sum_N_sign_D_r": 0.0,
+      "G_minus_sum_D_1_N_cont": 0.0,
+      "I_minus_difference_N_sign_N_cont": 0.0,
+      "max_abs_identity_error": 0.0
+    },
+    {
+      "seed": 2718,
+      "step": 767,
+      "C_nll": 6.269336835657952,
+      "U_nll": 6.268255440614217,
+      "RS_nll": 6.45421161512371,
+      "S_nll": 6.443635412322125,
+      "G": 0.1742985766641736,
+      "D_r": 0.18487477946575837,
+      "D_1": 0.1753799717079083,
+      "N_cont": -0.001081395043734723,
+      "N_sign": -0.010576202801584778,
+      "I": -0.009494807757850054,
+      "G_minus_sum_N_sign_D_r": 0.0,
+      "G_minus_sum_D_1_N_cont": 0.0,
+      "I_minus_difference_N_sign_N_cont": 0.0,
+      "max_abs_identity_error": 0.0
+    }
+  ],
+  "classification": {
+    "label": "DIRECTION_RESIDUAL_AT_BOTH_NORMS",
+    "tau_nats_per_token": 0.05,
+    "priority": [
+      "NORM_DOMINANT_IN_THIS_SCREEN",
+      "DIRECTION_RESIDUAL_AT_BOTH_NORMS",
+      "INTERACTION_OR_COMPENSATION",
+      "INCONCLUSIVE_OR_OTHER_PATTERN"
+    ],
+    "per_seed": [
+      {
+        "seed": 1729,
+        "values": {
+          "G": 0.1686183077365726,
+          "D_r": 0.1793738886319085,
+          "D_1": 0.169517129654416,
+          "N_cont": -0.0008988219178434065,
+          "N_sign": -0.010755580895335903,
+          "I": -0.009856758977492497
+        },
+        "A": {
+          "criteria": {
+            "G_gt_tau": true,
+            "abs_D_r_le_tau": false,
+            "abs_D_1_le_tau": false,
+            "N_cont_gt_tau": false,
+            "N_sign_gt_tau": false
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        },
+        "B": {
+          "criteria": {
+            "D_r_gt_tau": true,
+            "D_1_gt_tau": true
+          },
+          "passed": true,
+          "unmet_reasons": []
+        },
+        "C": {
+          "criteria": {
+            "abs_D_r_le_tau": false,
+            "D_1_gt_tau": true,
+            "A_not_satisfied_across_both_seeds": true
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        }
+      },
+      {
+        "seed": 2718,
+        "values": {
+          "G": 0.1742985766641736,
+          "D_r": 0.18487477946575837,
+          "D_1": 0.1753799717079083,
+          "N_cont": -0.001081395043734723,
+          "N_sign": -0.010576202801584778,
+          "I": -0.009494807757850054
+        },
+        "A": {
+          "criteria": {
+            "G_gt_tau": true,
+            "abs_D_r_le_tau": false,
+            "abs_D_1_le_tau": false,
+            "N_cont_gt_tau": false,
+            "N_sign_gt_tau": false
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        },
+        "B": {
+          "criteria": {
+            "D_r_gt_tau": true,
+            "D_1_gt_tau": true
+          },
+          "passed": true,
+          "unmet_reasons": []
+        },
+        "C": {
+          "criteria": {
+            "abs_D_r_le_tau": false,
+            "D_1_gt_tau": true,
+            "A_not_satisfied_across_both_seeds": true
+          },
+          "passed": false,
+          "unmet_reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        }
+      }
+    ],
+    "all_seeds_predicates": {
+      "A": false,
+      "B": true,
+      "C": false
+    },
+    "unmet_reasons_by_rule": {
+      "A": [
+        {
+          "seed": 1729,
+          "reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        },
+        {
+          "seed": 2718,
+          "reasons": [
+            "A requires abs(D_r) <= tau",
+            "A requires abs(D_1) <= tau",
+            "A requires N_cont > tau",
+            "A requires N_sign > tau"
+          ]
+        }
+      ],
+      "B": [],
+      "C": [
+        {
+          "seed": 1729,
+          "reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        },
+        {
+          "seed": 2718,
+          "reasons": [
+            "C requires abs(D_r) <= tau"
+          ]
+        }
+      ]
+    },
+    "additional_G_gate_for_B_or_C": false,
+    "scope": "two-seed exploratory screen; no significance, equivalence, novelty or causal mediation claim"
+  },
+  "no_additional_G_gate_for_B_or_C": true,
+  "not_significance_equivalence_causal_mediation_or_novelty": true
+}

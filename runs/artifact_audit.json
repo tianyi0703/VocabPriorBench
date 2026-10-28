@@ -1,0 +1,12 @@
+{
+  "prepared_provenance": "PASS",
+  "document_disjointness": "PASS",
+  "pca_orthogonality_and_rms": "PASS",
+  "common_init": "PASS",
+  "training_prefix_valid_tokens": 50800,
+  "cpu_only": true,
+  "run_accounting": "PASS",
+  "code_freeze_and_update": "PASS",
+  "finite_final_states": "PASS",
+  "gpu_budget": "PASS"
+}

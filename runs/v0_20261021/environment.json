@@ -1,0 +1,31 @@
+{
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.15 (main, Oct  9 2026, 15:21:55) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "F:\\VocabPriorBench\\.venv\\Scripts\\python.exe",
+  "torch": "2.10.0+cu128",
+  "cuda_build": "12.8",
+  "cudnn": 91002,
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "capability": [
+    8,
+    9
+  ],
+  "bf16_supported": true,
+  "system_ram": {
+    "total": 34038341632,
+    "available": 9247977472,
+    "percent": 72.8,
+    "used": 24790364160,
+    "free": 9247977472
+  },
+  "device_initial": {
+    "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "uuid": "GPU-REDACTED",
+    "total_mib": "8188",
+    "used_mib": "3688",
+    "free_mib": "4269",
+    "driver": "616.92",
+    "temperature_c": "48",
+    "power_w": "3.11"
+  }
+}
